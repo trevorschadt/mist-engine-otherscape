@@ -1,0 +1,236 @@
+/* Otherscape Garage pp. 4 and 12. Use the Applications theme. */
+:where(.theme-light) { --os-journal-texture: url("../textures/journal-light.jpeg"); }
+:where(.theme-dark) { --os-journal-texture: url("../textures/journal-dark.jpeg"); }
+
+.journal-entry-content {
+  color-scheme: var(--os-interface-color-scheme, light);
+  --os-journal-ink: light-dark(#231f20, #fff);
+  --os-journal-title: light-dark(#14123b, #fff);
+  --os-journal-muted: light-dark(#4d6076, #cacfd6);
+  --os-journal-banner: light-dark(#d2ff33, #45435c);
+  --os-journal-banner-ink: light-dark(#14123b, #d2ff33);
+  --os-journal-rule: light-dark(#bdc6ce, #45435c);
+  --os-journal-tag: light-dark(#e9edab, #595b20);
+  --os-journal-status: light-dark(#cbdcba, #136768);
+  --os-journal-limit: light-dark(#f2b9c4, #9e3153);
+  --os-journal-location: light-dark(#b9cedd, #31536c);
+  background-color: light-dark(#f2f4f4, #100e27);
+  background-image: var(--os-journal-texture, url("../textures/journal-light.jpeg"));
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: 100% auto;
+  color: var(--os-journal-ink);
+  --color-text-primary: var(--os-journal-ink);
+  --color-text-secondary: var(--os-journal-muted);
+  --color-text-emphatic: var(--os-journal-title);
+  font: 400 1rem/1.55 "Exo 2", sans-serif;
+  &:not(:has(prose-mirror, .ProseMirror, [contenteditable="true"])) {
+    padding: clamp(16px, 3vw, 36px);
+  }
+
+  & .journal-entry-page { background: transparent; }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) {
+    background: transparent;
+    color: var(--os-journal-ink);
+    font: inherit;
+    overflow-wrap: break-word;
+  }
+  & :is(h1, h2, h3, h4, h5, h6) {
+    text-shadow: none;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+    color: var(--os-journal-title);
+    line-height: 1.15;
+    margin: 1.1em 0 .5em;
+    padding: 0;
+  }
+  & :is(h1, .journal-page-header h2) {
+    font: 700 3rem/1.05 "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    background: none;
+    width: auto;
+    max-width: 100%;
+    margin: .55em 0 .65em;
+    padding: 0;
+    clip-path: none;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) h2 {
+    display: table;
+    max-width: 100%;
+    font: 700 1.9rem/1.1 "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    color: var(--os-journal-banner-ink);
+    background: var(--os-journal-banner);
+    padding: .12em .5em .1em .16em;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) h3 {
+    display: table;
+    max-width: 100%;
+    font: 700 1rem/1.25 "Exo 2", sans-serif;
+    text-transform: uppercase;
+    color: var(--os-journal-banner-ink);
+    background: var(--os-journal-banner);
+    padding: .08em .3em;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) h4 {
+    font: 600 .9rem/1.3 "Exo 2", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--os-journal-muted);
+    border-bottom: 1px solid var(--os-journal-rule);
+    padding-bottom: .2em;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) :is(h5, h6) {
+    font: 400 1rem/1.25 "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) :is(p, ul, ol) { margin: .65em 0; }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) :is(ul, ol) { padding-left: 1.4em; }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) li { margin: .25em 0; }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) :is(.lede, .lead) {
+    font: 600 1.25rem/1.3 "Exo 2", sans-serif;
+    color: light-dark(#231f20, #d2d5e2);
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) blockquote {
+    color: var(--os-journal-muted);
+    border-color: var(--os-journal-rule);
+    background: transparent;
+    font-family: "Exo 2", sans-serif;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) mark:is(.tag, .status, .weakness, .limit, .location, .triggered-scene) {
+    background: var(--os-journal-tag);
+    color: var(--os-journal-ink);
+    font: italic 400 1em/1.4 "Exo 2", sans-serif;
+    border: 0;
+    border-radius: 0;
+    padding: 0 .14em;
+    box-shadow: none;
+    text-shadow: none;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) mark:is(.status, .tag.green) { background: var(--os-journal-status); }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) mark:is(.limit, .tag.red) { background: var(--os-journal-limit); }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) mark:is(.location, .triggered-scene) {
+    background: var(--os-journal-location);
+    font-style: normal;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) :is(a.content-link, a.inline-roll) {
+    color: var(--os-journal-title);
+    background: light-dark(#dce3e9, #34334d);
+    border-color: var(--os-journal-rule);
+    text-shadow: none;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) table {
+    background: light-dark(#eef1f2, #1c1b35);
+    color: var(--os-journal-ink);
+    border-color: var(--os-journal-rule);
+    font-family: "Exo 2", sans-serif;
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) :is(th, td, th p, td p) { color: var(--os-journal-ink); }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) th {
+    background: var(--os-journal-banner);
+    color: var(--os-journal-banner-ink);
+    border-color: var(--os-journal-rule);
+  }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) tr:nth-of-type(even) td { background: light-dark(#dfe5e980, #45435c66); }
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) hr { border-color: var(--os-journal-rule); background: none; }
+}
+
+/* Journal navigation and page editors follow the same dark palette as reading mode. */
+@container style(--os-interface-color-scheme: dark) {
+  :is(.journal-sheet, .journal-entry, .journal-page-sheet, .journal-entry-page).application > .window-content {
+    color-scheme: dark;
+    --color-text-primary: #eef3fa;
+    --color-text-emphatic: #fff;
+    --color-text-secondary: #b9c8d8;
+    --color-text-subtle: #b9c8d8;
+    --color-form-label: #eef3fa;
+    --color-form-hint: #b9c8d8;
+    --color-select-option-bg: #182430;
+    color: var(--color-text-primary);
+    background: #202c3a;
+
+    & :is(.journal-sidebar, .journal-entry-pages, prose-mirror, .ProseMirror) {
+      color: var(--color-text-primary);
+    }
+
+    & .journal-sidebar {
+      background: #182430;
+      border-color: #60758c;
+    }
+
+    & :is(.journal-sidebar a, nav.tabs [data-tab]):not(.active) { color: #fff; }
+    & :is(.journal-sidebar a, nav.tabs [data-tab]).active { color: #d2ff33; }
+
+    & :is(input:not([type="checkbox"], [type="radio"], [type="range"]), select, textarea) {
+      --input-background-color: #182430;
+      --input-border-color: #60758c;
+      --input-text-color: #eef3fa;
+      --input-placeholder-color: #b9c8d8;
+    }
+
+    & :is(prose-mirror .editor-content, .ProseMirror, .editor-content[contenteditable="true"]) {
+      background-color: #182430;
+      border-color: #60758c;
+    }
+  }
+}
+
+/* Use the viewer's resolved Applications theme for the reading pane. */
+[data-os-journal-theme="dark"] .journal-entry-content {
+  --os-interface-color-scheme: dark;
+  --os-journal-texture: url("../textures/journal-dark.jpeg");
+  color-scheme: only dark;
+  --color-scheme: dark;
+  --color-text-subtle: var(--os-journal-muted);
+  color: var(--os-journal-ink);
+  background-color: #100e27;
+  background-image: var(--os-journal-texture);
+
+  --color-form-label: var(--os-journal-ink);
+  --color-form-hint: var(--os-journal-muted);
+
+  & :is(.text-container-300, .text-container-500, .container-paper-background-with-border,
+        .container-card-with-border, .tropes-wrapper .trope, .themekit-box, .letter-box) {
+    background: #26283d;
+    border: 1px solid #575c78;
+    border-image: none;
+    color: var(--os-journal-ink);
+  }
+
+  & :is(.trope-title, .themekit-box .heading, .theme-kits-header p) {
+    color: var(--os-journal-banner-ink);
+  }
+
+  & .journal-page-content:where(:not([contenteditable="true"], :has(prose-mirror, .ProseMirror, [contenteditable="true"]))) a[href]:not(.content-link, .inline-roll) { color: #a9d7ff; }
+
+  & :is(.journal-entry-pages, .journal-entry-page, .journal-page-content) {
+    color-scheme: dark;
+    --color-text-primary: var(--os-journal-ink);
+    --color-text-emphatic: var(--os-journal-title);
+    --color-text-secondary: var(--os-journal-muted);
+    color: var(--os-journal-ink);
+    background-color: transparent;
+  }
+
+  & :is(.journal-header, .journal-entry-header) input,
+  & input[name="name"] {
+    --input-text-color: var(--os-journal-title);
+    --input-background-color: #25243c;
+    --input-border-color: #575c78;
+    color: var(--os-journal-title);
+    background-color: #25243c;
+    border-color: #575c78;
+  }
+}
+
+[data-os-journal-theme="light"] .journal-entry-content {
+  --os-interface-color-scheme: light;
+  --os-journal-texture: url("../textures/journal-light.jpeg");
+  color-scheme: only light;
+  --color-scheme: light;
+}

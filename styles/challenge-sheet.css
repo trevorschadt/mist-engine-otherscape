@@ -1,0 +1,287 @@
+/* Garage Style Guide p. 7, Challenge panel. Use the slate palette in both
+   interface themes. The native sheet owns all fields, actions and tabs. */
+.mist-engine.sheet.actor.npc {
+  --os-challenge-title: #d4ff28;
+  --os-challenge-text: #edf3fa;
+  --os-challenge-muted: #bac9d8;
+  --os-challenge-edge: #536479;
+  --os-challenge-field: #182430;
+  --os-challenge-panel: #2c394a;
+
+  & > .window-header {
+    border-bottom-color: var(--os-challenge-title);
+  }
+
+  & .window-content {
+    color-scheme: dark;
+    color: var(--os-challenge-text);
+    background: linear-gradient(155deg, #354253, #1d2732 70%);
+    border: 1px solid #556173;
+    border-radius: 12px 12px 6px 6px;
+    padding: 12px 14px;
+    box-shadow: inset 0 0 0 4px #344153, inset 0 -3px 0 4px #747d88;
+    --color-text-emphatic: #fff;
+    --color-text-primary: var(--os-challenge-text);
+    --color-text-secondary: var(--os-challenge-muted);
+    --color-text-subtle: var(--os-challenge-muted);
+    --color-form-label: var(--os-challenge-text);
+    --color-form-label-hover: var(--os-challenge-title);
+    --color-form-hint: var(--os-challenge-muted);
+    --color-form-hint-hover: var(--os-challenge-text);
+    --color-select-option-bg: var(--os-challenge-field);
+    --color-fieldset-border: var(--os-challenge-edge);
+  }
+
+  & .sheet-header {
+    gap: 12px;
+    padding: 4px 3px 8px;
+    border-bottom: 1px solid var(--os-challenge-edge);
+  }
+
+  & .sheet-header .portrait-img {
+    border: 1px solid var(--os-challenge-edge);
+    border-radius: 8px 2px;
+    object-fit: cover;
+  }
+
+  & .sheet-header .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  & .sheet-header .difficulty-icons:has(img) {
+    order: -1;
+    display: flex;
+    gap: 2px;
+    padding: 2px 7px;
+    background: #9bbb31;
+    border-radius: 3px;
+  }
+
+  & .sheet-header .difficulty-icons img {
+    display: block;
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    content: url("../icons/challenge-level.svg");
+  }
+
+  & .sheet-header h1.npc-name {
+    color: var(--os-challenge-title);
+    font: 400 clamp(1.65rem, 3vw, 2.25rem)/1 var(--litm-font-heading);
+    letter-spacing: .035em;
+    margin: 0;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  & .sheet-header :is(.npc-roles, .npc-short-description) {
+    color: var(--os-challenge-text);
+    font-family: var(--litm-font-text);
+    text-align: start;
+  }
+
+  & nav.tabs [data-group="npc-sheet"] {
+    color: var(--os-challenge-muted);
+    font-family: var(--litm-font-heading);
+    letter-spacing: .05em;
+  }
+
+  & nav.tabs [data-group="npc-sheet"].active {
+    color: var(--os-challenge-title);
+    box-shadow: inset 0 -2px var(--os-challenge-title);
+    text-shadow: none;
+  }
+
+  & .npc-sheet-divider,
+  & .npc-beautified-container-stats {
+    flex-direction: column;
+    gap: 7px;
+    height: auto;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  & .npc-beautified-container-stats,
+  & :is(.npc-floating-tags-and-status-container, .tab-biography).container-card-with-border {
+    color: var(--os-challenge-text);
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  & .npc-subtitle-container-c {
+    gap: 6px;
+    margin: 8px 0 5px;
+  }
+
+  & .npc-subtitle-container-c::before {
+    background: var(--os-challenge-edge);
+  }
+
+  & .npc-subtitle-container-c::after {
+    display: none;
+  }
+
+  & .npc-subtitle-container-c .npc-subtitle-text {
+    color: var(--os-challenge-muted);
+    font: 400 .86rem/1 var(--litm-font-heading);
+    letter-spacing: .095em;
+    text-shadow: none;
+    text-transform: uppercase;
+  }
+
+  & .npc-beautified-container-stats .npc-limits-list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 5px;
+  }
+
+  & .npc-limits-list .npc-limit-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    max-width: 100%;
+    padding: 2px 5px 2px 8px;
+    color: #14123b;
+    background: #a4d638;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+  }
+
+  & .npc-beautified-container-stats .npc-limit-item :is(mark.limit, .limit-value) {
+    color: inherit;
+    background: transparent;
+    font-family: var(--litm-font-heading);
+    font-weight: 400;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    margin: 0;
+  }
+
+  & .npc-beautified-container-stats .npc-limit-item mark.limit {
+    font-size: .85rem;
+    line-height: 1.2;
+    font-style: normal;
+    text-transform: uppercase;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  & .npc-beautified-container-stats .npc-limit-item span.limit-value {
+    min-width: 0;
+    width: auto;
+    font-size: 1.65rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  & .npc-beautified-container-stats .npc-limit-item .limit-value::before {
+    content: none;
+  }
+
+  & .npc-beautified-container-stats .npc-limit-item.limit-reached {
+    background: #ffc7a9;
+  }
+
+  & .npc-limits-list .npc-limit-consequence {
+    flex: 0 0 100%;
+    background: var(--os-challenge-panel);
+    padding: 4px 7px;
+  }
+
+  & .npc-threats-and-consequences-container .entry-name {
+    background: var(--os-challenge-panel);
+    color: var(--os-challenge-text);
+  }
+
+  & .npc-threats-and-consequences-container .hr-gray-line {
+    display: none;
+  }
+
+  & .npc-floating-tags-and-status-container .fts-input-marking i.marking-circle {
+    color: #edf3fa;
+    background-color: #243447;
+    border-color: #8a9fb7;
+    opacity: 1;
+  }
+
+  & .npc-floating-tags-and-status-container .fts-input-marking i.marking-circle.active {
+    color: #172218;
+    background-color: #c9f45a;
+    border-color: #c9f45a;
+    font-weight: 700;
+  }
+
+  /* Each action also has a plus button inside its fieldset legend. */
+  & .window-content fieldset > button:is(
+    [data-action="createThreatAndConsequence"],
+    [data-action="createThreatAndConsequenceEntry"]
+  ) {
+    display: none;
+  }
+
+  /* Edit-mode surfaces and controls. Keep the existing inputs and actions. */
+  & .window-content fieldset {
+    margin: 0 0 8px;
+    padding: 5px 8px 8px;
+    border: 1px solid var(--os-challenge-edge);
+    border-radius: 7px 2px;
+    background: #202c3a;
+    color: var(--os-challenge-text);
+    font-family: var(--litm-font-text);
+  }
+
+  & .window-content fieldset > legend,
+  & .window-content .table-cell.header {
+    color: var(--os-challenge-title);
+    font-family: var(--litm-font-heading);
+    letter-spacing: .065em;
+  }
+
+  & .window-content :is(input, select, textarea) {
+    --input-background-color: var(--os-challenge-field);
+    --input-border-color: var(--os-challenge-edge);
+    --input-text-color: var(--os-challenge-text);
+    --input-placeholder-color: var(--os-challenge-muted);
+    --input-focus-outline-color: var(--os-challenge-title);
+  }
+
+  & .window-content .npc-name input {
+    --input-text-color: var(--os-challenge-title);
+    font: inherit;
+  }
+
+  & .window-content :is(.special-feature-entry, .threat-and-consequence-container-entry, .single-secret-container) {
+    background: var(--os-challenge-panel);
+    border: 1px solid var(--os-challenge-edge);
+    box-shadow: none;
+  }
+
+  & .window-content :is(button, a.button) {
+    --button-background-color: #35475b;
+    --button-border-color: #75869a;
+    --button-text-color: var(--os-challenge-text);
+    --button-hover-background-color: var(--os-challenge-title);
+    --button-hover-border-color: var(--os-challenge-title);
+    --button-hover-text-color: #172218;
+  }
+
+  & .window-content :is(input, select, textarea, button, a):focus-visible {
+    outline: 2px solid var(--os-challenge-title);
+    outline-offset: 1px;
+  }
+
+  & .window-content .help-text {
+    color: var(--os-challenge-muted);
+  }
+
+  & .window-content .tab-biography {
+    --litm-color: var(--os-challenge-text);
+    --litm-color-primary: var(--os-challenge-text);
+    --litm-color-accent-2: var(--os-challenge-title);
+  }
+}

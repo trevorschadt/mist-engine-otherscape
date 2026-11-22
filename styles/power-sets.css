@@ -1,0 +1,295 @@
+/* Garage Style Guide pp. 7–8: metal frame, category-colored inset. */
+.mist-engine.sheet.actor.npc .os-power-sets-tab { padding: 8px 2px 18px; }
+.mist-engine.sheet.actor.npc .os-power-sets-help { color: #d5e1ec; margin: 4px 0 16px; }
+.mist-engine.sheet.actor.npc .os-power-sets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
+  gap: 18px;
+  align-items: start;
+}
+.mist-engine.sheet.actor.npc .os-power-set {
+  --os-ps-accent: #cad3de;
+  --os-ps-panel: #283442;
+  --os-ps-band: #536579;
+  --os-ps-rule: #7c8995;
+  --os-ps-icon: none;
+  position: relative;
+  isolation: isolate;
+  padding: 38px 18px 22px;
+  color: #fff;
+  font: 400 .9rem/1.45 "Exo 2", sans-serif;
+  filter: drop-shadow(0 3px 3px #0006);
+
+  &[data-os-category="self"] {
+    --os-ps-accent: #ff397d;
+    --os-ps-panel: #32152c;
+    --os-ps-band: #a72359;
+    --os-ps-rule: #96516d;
+    --os-ps-icon: url("../icons/self.svg");
+  }
+  &[data-os-category="mythos"] {
+    --os-ps-accent: #a278d4;
+    --os-ps-panel: #292148;
+    --os-ps-band: #62408c;
+    --os-ps-rule: #70608d;
+    --os-ps-icon: url("../icons/mythos.svg");
+  }
+  &[data-os-category="noise"] {
+    --os-ps-accent: #32cbe9;
+    --os-ps-panel: #093446;
+    --os-ps-band: #127c9e;
+    --os-ps-rule: #447f91;
+    --os-ps-icon: url("../icons/noise.svg");
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(130deg, #666c77, #202b36 22%, #8b8f99 50%, #4c535e 63%, #19252f);
+    clip-path: polygon(0 0, 12% 24px, 43% 24px, 47% 16px, 67% 16px, 71% 24px, 96% 24px, 100% 34px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 31px 4px 4px;
+    z-index: -1;
+    border-top: 3px solid var(--os-ps-accent);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--os-ps-panel), #000 28%), var(--os-ps-panel));
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+  & .os-power-set-category-label {
+    color: var(--os-ps-accent);
+    text-transform: uppercase;
+    font: 400 .6rem/1.3 "Exo 2", sans-serif;
+    text-align: right;
+    letter-spacing: .08em;
+    margin-bottom: 6px;
+  }
+  & .os-power-set-heading {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+  & h2 {
+    color: var(--os-ps-accent);
+    font: 400 1.6rem/1.1 "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    text-shadow: none;
+    border: 0;
+    background: none;
+    margin: 0;
+    flex: 1;
+  }
+  & .os-power-set-icon {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    background: var(--os-ps-accent);
+    mask: var(--os-ps-icon) center / contain no-repeat;
+  }
+  &[data-os-category="unassigned"] .os-power-set-icon { display: none; }
+  & .os-power-set-rating { color: var(--os-ps-accent); white-space: nowrap; }
+  & .os-power-set-reticle {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: var(--os-ps-accent);
+    mask: url("../icons/challenge-level.svg") center / contain no-repeat;
+  }
+  & h3 {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    font: 400 .65rem/1.3 "Exo 2", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--os-ps-rule);
+    margin: 14px 0 6px;
+    border: 0;
+    text-shadow: none;
+  }
+  & h3::before { content: ""; flex: 1; height: 1px; background: var(--os-ps-rule); }
+  & p { margin: .35em 0; }
+  & .os-power-set-roles { color: #cdd9e7; font-style: italic; }
+  & .os-power-set-limits { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  & .os-power-set-limit {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--os-ps-band);
+    padding: 2px 8px;
+    font: 400 1rem/1 "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+  }
+  & .os-power-set-limit strong { font-size: 1.65em; font-weight: 400; }
+  & .os-power-set-progress { flex-basis: 100%; background: var(--os-ps-band); padding: 3px 6px; }
+  & .os-power-set-tools { display: flex; gap: 8px; margin: 8px 0; }
+  & button { width: auto; height: auto; padding: 3px 8px; color: #fff; background: #253343; border: 1px solid #9aaaba; }
+  & .os-power-set-threat { margin: 9px 0; }
+  & .os-power-set-threat-description { font-style: italic; }
+  & .os-power-set-consequence { padding-left: 12px; }
+  & .os-power-set-consequence > p { display: inline; }
+  & mark { color: #fff; background: #777b25; border: 0; border-radius: 0; padding: 0 2px; font-style: italic; }
+  & mark.status { background: #126968; }
+  & a.content-link { color: #fff; background: #344554; border-color: #8298aa; }
+}
+.mist-engine.sheet.item.npc :is(.os-power-set-category, .os-power-set-description-field) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+/* Form palette shared by the item and Crew Theme sheets. */
+.mist-engine.sheet:is(.item, .themebook, .actor.litm-fellowship-themecard) .window-content {
+  --os-ps-form-ink: light-dark(#14123b, #eef3fa);
+  --os-ps-form-muted: light-dark(#4d6076, #b9c8d8);
+  --os-ps-form-bg: light-dark(#eef2f4, #202c3a);
+  --os-ps-form-panel: light-dark(#e0e7ec, #2c394a);
+  --os-ps-form-field: light-dark(#fff, #182430);
+  --os-ps-form-edge: light-dark(#8b9baa, #60758c);
+  --os-ps-form-accent: light-dark(#334964, #d2ff33);
+}
+
+/* Editable Power Set sheet follows the Applications theme. */
+.mist-engine.sheet.item.npc.os-power-set-form .window-content {
+  color-scheme: var(--os-interface-color-scheme, light);
+  --color-text-primary: var(--os-ps-form-ink);
+  --color-text-secondary: var(--os-ps-form-muted);
+  --color-text-emphatic: var(--os-ps-form-ink);
+  --color-form-label: var(--os-ps-form-ink);
+  --color-form-hint: var(--os-ps-form-muted);
+  --color-select-option-bg: var(--os-ps-form-field);
+  color: var(--os-ps-form-ink);
+  font: 400 .95rem/1.4 "Exo 2", sans-serif;
+  background: var(--os-ps-form-bg);
+  padding: 12px 16px;
+
+  & fieldset {
+    color: var(--os-ps-form-ink);
+    border: 1px solid var(--os-ps-form-edge);
+    border-radius: 7px 2px;
+    background: var(--os-ps-form-bg);
+    padding: 6px 10px 10px;
+    margin-bottom: 12px;
+  }
+  & :is(legend, .table-cell.header) {
+    color: var(--os-ps-form-accent);
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: .04em;
+    background: transparent;
+  }
+  & :is(.help-text, .short-description) {
+    color: var(--os-ps-form-muted);
+    font-family: "Exo 2", sans-serif;
+  }
+  & :is(.box-shadowed, .box-shadowed-container, .threat-and-consequence-container-entry, .single-secret-container, .special-feature-entry) {
+    color: var(--os-ps-form-ink);
+    background: var(--os-ps-form-panel);
+    background-image: none;
+    box-shadow: none;
+    border-color: var(--os-ps-form-edge);
+  }
+  & :is(input, textarea, select) {
+    --input-text-color: var(--os-ps-form-ink);
+    --input-background-color: var(--os-ps-form-field);
+    --input-border-color: var(--os-ps-form-edge);
+    --input-placeholder-color: var(--os-ps-form-muted);
+    color: var(--os-ps-form-ink);
+    background: var(--os-ps-form-field);
+    border-color: var(--os-ps-form-edge);
+    font-family: "Exo 2", sans-serif;
+  }
+  & :is(button, a.button) {
+    --button-text-color: var(--os-ps-form-ink);
+    --button-background-color: var(--os-ps-form-panel);
+    --button-border-color: var(--os-ps-form-edge);
+    --button-hover-background-color: light-dark(#cbd9e4, #405369);
+    color: var(--os-ps-form-ink);
+    background: var(--os-ps-form-panel);
+    border-color: var(--os-ps-form-edge);
+    font-family: "Exo 2", sans-serif;
+  }
+  & .trash-icon-container a { color: var(--os-ps-form-ink); }
+  & hr { border-color: var(--os-ps-form-edge); background: none; }
+}
+
+
+.mist-engine.sheet.actor.npc .os-edit-combined-tag {
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 22px;
+  height: auto;
+  padding: 1px 6px;
+  margin-left: 4px;
+  font: 400 .75rem/1.3 "Exo 2", sans-serif;
+}
+
+/* The style query respects the nearest Foundry theme, including app overrides. */
+@container style(--os-interface-color-scheme: dark) {
+  .mist-engine.sheet:is(.item:not(.os-power-set-form), .themebook, .actor.litm-fellowship-themecard) .window-content {
+    color-scheme: dark;
+    --os-ink: var(--os-ps-form-ink);
+    --os-muted: var(--os-ps-form-muted);
+    --os-surface: var(--os-ps-form-bg);
+    --os-panel: var(--os-ps-form-panel);
+    --os-line: var(--os-ps-form-edge);
+    --os-steel: #405369;
+    --litm-color-alt-bg: var(--os-ps-form-panel);
+    --color-select-option-bg: var(--os-ps-form-field);
+    --color-form-label-hover: var(--os-ps-form-accent);
+    background: var(--os-surface);
+    border-color: var(--os-line);
+
+    & nav.tabs [data-tab]:not(.active) {
+      color: #fff;
+    }
+
+    & :is(legend, .table-cell.header, .themebook-section-header) {
+      color: var(--os-ps-form-accent);
+      background: transparent;
+      font-family: var(--litm-font-heading);
+    }
+
+    & :is(.help-text, .short-description, .fellowship-promises-container) {
+      color: var(--os-muted);
+    }
+
+    & :is(.box-shadowed, .box-shadowed-container, .threat-and-consequence-container-entry,
+          .single-secret-container, .special-feature-entry) {
+      color: var(--os-ink);
+      background: var(--os-panel);
+      border-color: var(--os-line);
+      box-shadow: none;
+    }
+
+    & fieldset, & hr { border-color: var(--os-line); }
+
+    & :is(input, select, textarea):not([type="range"], [type="checkbox"], [type="radio"]) {
+      --input-background-color: var(--os-ps-form-field);
+      --input-focus-outline-color: var(--os-ps-form-accent);
+      color: var(--os-ink);
+      background: var(--os-ps-form-field);
+      border-color: var(--os-line);
+    }
+
+    & :is(button, a.button) {
+      --button-background-color: var(--os-panel);
+      color: var(--os-ink);
+      background: var(--button-background-color);
+      border-color: var(--os-line);
+    }
+
+    & :is(button, a.button):is(:hover, :focus-visible) {
+      --button-background-color: var(--os-steel);
+    }
+
+    & :is(button, a, input, select, textarea):focus-visible {
+      outline-color: var(--os-ps-form-accent);
+    }
+  }
+}

@@ -1,0 +1,177 @@
+:is(.mist-engine.litm-character, .os-essence-dialog) .os-essence {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid #7b8ca4;
+  border-left: 3px solid #c8f047;
+  border-radius: 3px;
+  background: #202d40;
+  color: #eef4ff;
+  font: 400 .85rem/1.4 "Exo 2", sans-serif;
+
+  & h2 {
+    color: #d7f981;
+    font: 400 1.25rem "Bebas Neue", sans-serif;
+    letter-spacing: .05em;
+    margin: 0;
+    border: 0;
+  }
+
+  & p { margin: 4px 0; }
+  & .os-essence-counts { color: #c5d2e4; }
+  & .os-essence-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  & .os-essence-controls label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  & .os-essence-controls button {
+    width: auto;
+    --button-background-color: #35475b;
+    --button-border-color: #8194aa;
+    --button-text-color: #fff;
+    --button-hover-background-color: #d7f981;
+    --button-hover-text-color: #172218;
+  }
+  & :is(.os-essence-source, .os-essence-agenda) {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 6px;
+  }
+  & :is(input[type="text"], textarea) {
+    --input-background-color: #152132;
+    --input-text-color: #eef4ff;
+    --input-border-color: #7b8ca4;
+  }
+  & summary { cursor: pointer; color: #d7f981; }
+}
+
+/* Keep category rolls alongside the status box, independent of its tag grid. */
+.mist-engine.litm-character .sheet-header .col-status.os-status-with-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  align-items: start;
+  gap: 8px;
+}
+.mist-engine.litm-character .os-status-with-controls > .floating-status-container-character {
+  width: 100%;
+  min-width: 0;
+}
+.mist-engine.litm-character .os-status-with-controls > .os-roll-with {
+  margin: 0;
+  min-width: 0;
+}
+.mist-engine.litm-character .os-roll-with > button {
+  width: 100%;
+  height: auto;
+  min-height: 28px;
+  white-space: normal;
+}
+.os-essence-dialog .os-essence { margin: 0; }
+.os-essence-dialog .window-content { overflow-y: auto; }
+
+/* The premium portrait offset belongs only to the inline sheet editor. */
+.mist-engine.litm-character .sheet-header + .os-essence {
+  margin: 4px 0 6px var(--litm-premium-left-margin, 0px);
+}
+.application.os-essence-dialog {
+  --background: #182333;
+  --color-text-primary: #eef4ff;
+  max-width: calc(100vw - 24px);
+}
+.application.os-essence-dialog .window-content {
+  padding: 12px;
+  background: #182333;
+  color: #eef4ff;
+  gap: 12px;
+}
+.application.os-essence-dialog :is(.dialog-content, .os-essence-content) {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+.application.os-essence-dialog .os-essence-content > .os-essence {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 14px 16px;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.application.os-essence-dialog .os-essence :is(h2, p, summary) {
+  text-shadow: none;
+}
+.application.os-essence-dialog .os-essence h2 { margin-bottom: 8px; }
+.application.os-essence-dialog .os-essence p { margin: 8px 0; }
+.application.os-essence-dialog .os-essence details { margin-top: 12px; }
+
+/* Keep changing action availability from reflowing the usage checklist. */
+:is(.mist-engine.litm-character, .os-essence-dialog) .os-essence .os-essence-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+:is(.mist-engine.litm-character, .os-essence-dialog) .os-essence :is(.os-essence-actions, .os-essence-trackers, .os-essence-resets) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  min-width: 0;
+}
+:is(.mist-engine.litm-character, .os-essence-dialog) .os-essence .os-essence-trackers label {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 4px 0;
+  line-height: 1.4;
+}
+:is(.mist-engine.litm-character, .os-essence-dialog) .os-essence .os-essence-trackers input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+:is(.mist-engine.litm-character, .os-essence-dialog) .os-essence .os-essence-controls button {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 32px;
+  padding: 6px 10px;
+  white-space: normal;
+  line-height: 1.4;
+}
+:is(.mist-engine.litm-character, .os-essence-dialog) .os-essence .os-essence-resets {
+  border-top: 1px solid #64758a;
+  padding-top: 10px;
+}
+
+.mist-engine.litm-character .os-essence-tabs-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  margin-left: var(--litm-premium-left-margin, 0px);
+  min-width: 0;
+}
+.mist-engine.litm-character .os-essence-tabs-row > .litm-character-sheet-tabs {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0;
+}
+.mist-engine.litm-character .os-essence-tabs-button {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 4px 10px;
+  align-self: stretch;
+  font-family: "Bebas Neue", sans-serif;
+  white-space: normal;
+}

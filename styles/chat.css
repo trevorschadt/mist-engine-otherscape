@@ -1,0 +1,181 @@
+/* Chat logs can carry their own theme-light class. Resolve the chat palette
+   from the body so that nested application classes cannot reset it. */
+body.theme-light { --os-chat-color-scheme: light; }
+body.theme-dark { --os-chat-color-scheme: dark; }
+
+/* Otherscape Garage Style Guide side boxes: light p. 5, dark p. 13.
+   Clip only the decorative layers so text, focus outlines and menus can overflow. */
+.chat-message.chat-message {
+  color-scheme: var(--os-chat-color-scheme, light);
+  --os-chat-text: light-dark(#232e38, #eef3fa);
+  --os-chat-muted: light-dark(#425867, #c3ccd9);
+  --os-chat-title: light-dark(#141639, #ff5d72);
+  --os-chat-edge: light-dark(#77a8b0, #7397a9);
+  --os-chat-hazard: light-dark(#e53350, #fc3f59);
+  --os-chat-hazard-gap: light-dark(#f5cad1, #3c283b);
+  --os-chat-panel-start: light-dark(#f2f8f8, #1b263e);
+  --os-chat-panel-middle: light-dark(#e1edf0, #212d43);
+  --os-chat-panel-end: light-dark(#d7e7eb, #192437);
+  --os-chat-scanline: light-dark(#60949c0d, #a1c0df0a);
+  --os-chat-result-panel: light-dark(#f7fbfd, #10192a80);
+  --os-chat-control: light-dark(#eef6f8, #131e30);
+  --os-chat-control-hover: light-dark(#ccdee5, #344963);
+  --os-chat-line: light-dark(#809ea9, #536880);
+  --os-chat-control-edge: light-dark(#7696a4, #62778d);
+  --os-chat-focus: light-dark(#235870, #b7e3ff);
+  --os-chat-shape: polygon(
+    10px 0, calc(100% - 78px) 0, calc(100% - 72px) 5px,
+    calc(100% - 20px) 5px, calc(100% - 14px) 0, calc(100% - 8px) 0,
+    100% 8px, 100% calc(50% - 6px), calc(100% - 4px) calc(50% - 2px),
+    calc(100% - 4px) calc(50% + 4px), 100% calc(50% + 8px),
+    100% calc(100% - 9px), calc(100% - 9px) 100%,
+    64px 100%, 58px calc(100% - 4px), 21px calc(100% - 4px),
+    15px 100%, 9px 100%, 0 calc(100% - 9px), 0 10px
+  );
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 9px 12px 10px;
+  color: var(--os-chat-text);
+  font-family: "Exo 2", system-ui, sans-serif;
+  --color-text-primary: var(--os-chat-text);
+  --color-text-emphatic: light-dark(#141639, #fff);
+  --color-text-secondary: var(--os-chat-muted);
+  --color-text-subtle: var(--os-chat-muted);
+}
+
+/* Retain a distinctive outline for private and blind messages. */
+.chat-message:is(.whisper, .blind) {
+  --os-chat-edge: light-dark(#9567b0, #c69ee4);
+}
+
+.chat-message::before,
+.chat-message::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  clip-path: var(--os-chat-shape);
+}
+
+.chat-message::before {
+  z-index: -2;
+  inset: 0;
+  background:
+    repeating-linear-gradient(130deg, var(--os-chat-hazard) 0 4px, var(--os-chat-hazard-gap) 4px 7px)
+      right 18px top / 57px 7px no-repeat,
+    repeating-linear-gradient(130deg, var(--os-chat-hazard) 0 4px, var(--os-chat-hazard-gap) 4px 7px)
+      left 19px bottom / 42px 6px no-repeat,
+    var(--os-chat-edge);
+}
+
+.chat-message::after {
+  z-index: -1;
+  inset: 2px;
+  background:
+    repeating-linear-gradient(0deg, var(--os-chat-scanline) 0 1px, transparent 1px 4px),
+    linear-gradient(145deg, var(--os-chat-panel-start), var(--os-chat-panel-middle) 53%, var(--os-chat-panel-end));
+}
+
+.chat-message .message-header,
+.chat-message :is(.message-metadata, .whisper-to) {
+  color: var(--os-chat-muted);
+}
+
+.chat-message :is(.message-header .message-sender, .message-content .card-title,
+  .message-content .camping-chat-title) {
+  color: var(--os-chat-title);
+  font: 400 1.2rem/1.1 "Bebas Neue", "Arial Narrow", sans-serif;
+  letter-spacing: .045em;
+  overflow-wrap: anywhere;
+}
+
+.chat-message .message-content {
+  color: var(--os-chat-text);
+  overflow-wrap: anywhere;
+}
+
+.chat-message .message-content :is(.roll-card, .consequence-container, .camping-chat-entry,
+  .selected-tags, .detailed-spend) {
+  color: inherit;
+  font-family: inherit;
+}
+
+.chat-message .roll-card .selected-tags .tag {
+  color: #14123b;
+  font-style: italic;
+  background: #dce7f5;
+}
+
+.chat-message .roll-card .selected-tags .tag.positive { background: var(--os-tag); }
+.chat-message .roll-card .selected-tags .tag.negative { background: var(--os-weakness); }
+
+.chat-message .consequence-container :is(
+  .consequence-result-positive, .consequence-result-neutral, .consequence-result-negative
+) {
+  background: var(--os-chat-result-panel);
+  border: 1px solid var(--os-chat-line);
+  border-inline-start: 3px solid var(--os-chat-result);
+  border-radius: 2px;
+  color: var(--os-chat-text);
+}
+
+.consequence-result-positive { --os-chat-result: light-dark(#246141, #a5e3b4); }
+.consequence-result-neutral { --os-chat-result: light-dark(#765015, #ffe094); }
+.consequence-result-negative { --os-chat-result: light-dark(#9c2c46, #ff8796); }
+
+.chat-message .consequence-container .heading {
+  font: 400 1.3rem "IBM Plex Mono", Consolas, monospace;
+  color: var(--os-chat-result, var(--os-chat-text));
+}
+
+/* Outcome badges from the guide and the paired mixed-success badge. */
+.chat-message .consequence-container .consequence-result-icon {
+  /* Clear the upstream offset for its larger result artwork. */
+  inset: auto;
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -.19em;
+  margin-inline-end: .3em;
+  background: var(--os-chat-result-icon) center / contain no-repeat;
+}
+
+.chat-message .consequence-result-icon.positive {
+  --os-chat-result-icon: url("../icons/success.svg");
+}
+
+.chat-message .consequence-result-icon.neutral {
+  --os-chat-result-icon: url("../icons/mixed-success.svg");
+}
+
+.chat-message .consequence-result-icon.negative {
+  --os-chat-result-icon: url("../icons/consequences.svg");
+}
+
+.chat-message :is(.dice-total, .dice-formula, .detailed-spend .detailed-spend-btn) {
+  background: var(--os-chat-control);
+  color: var(--os-chat-text);
+  border-color: var(--os-chat-control-edge);
+}
+
+.chat-message .consequence-container .power-counter,
+.chat-message .detailed-spend { border-color: var(--os-chat-line); }
+
+.chat-message .detailed-spend :is(.detailed-spend-header, .detailed-spend-undo) {
+  color: var(--os-chat-title);
+}
+
+.chat-message .detailed-spend .detailed-spend-btn {
+  font-family: inherit;
+}
+
+.chat-message .detailed-spend .detailed-spend-btn:hover:not(:disabled) {
+  background: var(--os-chat-control-hover);
+  box-shadow: none;
+}
+
+.chat-message :is(a, button, [role="button"]):focus-visible {
+  outline: 2px solid var(--os-chat-focus);
+  outline-offset: 1px;
+}

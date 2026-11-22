@@ -1,0 +1,148 @@
+/* Pregen folio palette for locked character themes. */
+.mist-engine.litm-character .themebook-container[data-card-key].os-illustrated-theme:has(> .themebook-style > .themebook-item > .theme-name > .themebook-icon) {
+  --os-folio-accent: #a278d4;
+  --os-folio-row: #604085;
+  --os-folio-dark: #251c38;
+  --os-folio-edge: #b490db;
+
+  &[data-os-category="self"] {
+    --os-folio-accent: #ff397d;
+    --os-folio-row: #8c244d;
+    --os-folio-dark: #301522;
+    --os-folio-edge: #f95891;
+  }
+
+  &[data-os-category="noise"] {
+    --os-folio-accent: #58d3ef;
+    --os-folio-row: #216981;
+    --os-folio-dark: #112b3a;
+    --os-folio-edge: #61d4ed;
+  }
+
+  & > .themebook-style {
+    --os-theme-ink: #fff;
+    --os-card-text: #fff;
+    --os-card-muted: #d4c9da;
+    --os-theme-row: var(--os-folio-row);
+    --os-theme-row-edge: var(--os-folio-edge);
+    --os-theme-band: var(--os-folio-row);
+    --os-theme-rule: var(--os-folio-accent);
+    --os-theme-active: var(--os-folio-accent);
+    background: linear-gradient(160deg, var(--os-folio-dark), #11121c);
+    color: #fff;
+  }
+
+  & .themebook-style > .powertags-container {
+    flex-grow: 0;
+  }
+
+  & .themebook-style .item-powertag-line::before {
+    border-left: 4px solid var(--os-folio-accent);
+    background: var(--os-folio-row);
+  }
+
+  & .themebook-style .item-powertag-line.os-planned-tag::before {
+    border-left-color: #fff;
+    background: color-mix(in srgb, var(--os-folio-row) 38%, var(--os-folio-dark));
+  }
+
+  & .themebook-style .os-planned-tag .litm-pc-powertag {
+    color: #e6dfe9;
+  }
+
+  & .themebook-style :is(.litm-pc-powertag, .litm-pc-weakness) {
+    font-family: "Exo 2", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  & .themebook-style .litm-pc-powertag.first {
+    font-size: 1.2em;
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  & .themebook-style .item-weakness-line:has(.litm-pc-weakness)::before {
+    border-color: #b6cb40;
+    border-left: 4px solid #d8e95e;
+    background: repeating-linear-gradient(135deg, #647123 0 10px, #454528 10px 20px);
+  }
+
+  & .themebook-style .item-weakness-line:has(.litm-pc-weakness.selected)::before {
+    background: repeating-linear-gradient(135deg, #85952b 0 10px, #59621f 10px 20px);
+    border-color: #e6f483;
+  }
+
+  & .themebook-style .item-weakness-line:has(.litm-pc-weakness.selected) {
+    outline-color: #e6f483;
+  }
+
+  & .themebook-style .burn-indicator[data-action]::before {
+    background: transparent;
+  }
+
+  & .themebook-style .quest-container > h3 {
+    color: var(--os-folio-accent);
+    background: transparent;
+    border-bottom: 2px solid var(--os-folio-accent);
+    font-size: .75rem;
+  }
+
+  & .themebook-style .quest-container > .quest-text {
+    background: transparent;
+    border: 0;
+    color: var(--os-folio-accent);
+    font: italic 400 1.45rem/1.05 var(--litm-font-heading);
+    text-transform: uppercase;
+    text-align: start;
+    padding: 8px 4px;
+  }
+
+  & .os-theme-story {
+    margin: 0 4px 8px;
+    color: #eee8f1;
+    font: 400 .78rem/1.4 "Exo 2", sans-serif;
+    white-space: pre-line;
+  }
+
+  & .themebook-style .special-improvement-section-label {
+    text-align: left;
+    text-shadow: none;
+    margin: 5px 5px 2px;
+    padding: 2px 5px;
+    color: var(--os-folio-accent);
+    font: 400 .75rem var(--litm-font-heading);
+    border-bottom: 1px solid var(--os-folio-accent);
+  }
+
+  & .item-special-improvement-line {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 5px 6px;
+    background: color-mix(in srgb, var(--os-folio-row) 55%, var(--os-folio-dark));
+    border-left: 3px solid var(--os-folio-edge);
+  }
+
+  & .themebook-style .special-improvement-label {
+    text-align: start;
+    color: #fff;
+    font: 700 .85rem/1.2 "Exo 2", sans-serif;
+    text-transform: uppercase;
+  }
+
+  & .os-theme-special-description {
+    color: #eee8f1;
+    font: 400 .76rem/1.35 "Exo 2", sans-serif;
+    margin-top: 4px;
+  }
+
+  & .os-theme-special-description p { margin: 0 0 4px; }
+}
+
+/* Follow the user's native Tidy Tags setting, including dynamically added rows. */
+html.os-hide-planned-tags div.os-planned-tag {
+  display: none !important;
+}

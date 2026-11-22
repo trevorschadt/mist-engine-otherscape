@@ -1,0 +1,379 @@
+{
+  "MIST_ENGINE": {
+    "CAMPING": {
+      "AddCampsiteTag": "Add safehouse tag or status",
+      "BackpackReview": "Loadout Review",
+      "BackpackReviewHintPlayer": "Propose story tags of your loadout for expiration — the MC has the final say.",
+      "Camp": "Downtime",
+      "CampAction": "Downtime Action",
+      "CampActionHint": "Choose a downtime activity and select its tags. Roll, or spend half your Power (rounded up).",
+      "CampActionSojournHint": "The extended downtime Power bonus is included automatically.",
+      "CampsiteTags": "Safehouse Tags & Statuses",
+      "ChatActionTitle": "Downtime Action",
+      "ChatEndedLine": "The crew wraps up downtime and gets back to the job.",
+      "ChatEndedTitle": "Back on the job",
+      "ChatFellowshipTitle": "Crew Time",
+      "ChatPeriodTitle": "A new downtime period begins",
+      "ChatReflectLine": "reflects and marks Upgrade on \"{theme}\".",
+      "ChatRestLine": "takes time to recover — the MC expires appropriate statuses.",
+      "ChatStartedLine": "{mode} begins ({duration}). Review your loadout and choose an activity.",
+      "ChatStartedTitle": "The crew takes a breather",
+      "ConfirmRecoverFellowship": "Recover the relationship tag \"{name}\"? This uses your crew time for this downtime scene.",
+      "ConfirmReflect": "Reflect and mark Upgrade on \"{theme}\"? This can only be chosen once per downtime scene and cannot be undone.",
+      "ConfirmRest": "Take a rest now? This can only be chosen once per downtime scene and cannot be undone.",
+      "Duration": "Length of stay (extended downtime only)",
+      "DurationHint": "Extended downtime adds Power to downtime actions: days +1, weeks +2, months +3.",
+      "EmptyBackpack": "Empty loadout.",
+      "End": "End Downtime",
+      "FellowshipAlreadyUsed": "You have already used your crew time.",
+      "FellowshipHint": "Recover a scratched relationship tag or create a new one with another PC (once per downtime scene).",
+      "FellowshipTime": "Crew Time",
+      "GmControls": "MC Controls",
+      "Inactive": "No downtime or extended downtime is currently in progress.",
+      "NoActiveScene": "Activate a scene before starting downtime.",
+      "NoCampsiteTags": "No safehouse tags yet.",
+      "NoPowerSelected": "Select at least one tag (1 Power or more) for your downtime action first.",
+      "ReflectAlreadyUsed": "You have already reflected during this downtime scene.",
+      "ReflectHint": "Internalize what you have been through: mark Upgrade on one of your themes (once per downtime scene).",
+      "RestAlreadyUsed": "You have already rested during this downtime scene.",
+      "RestHint": "Use one rest per downtime scene to recover and expire statuses. Extended downtime can clear more serious injuries.",
+      "SetupTitle": "Set Up Downtime",
+      "Sojourn": "Extended Downtime",
+      "Title": "Downtime (Mist Engine)"
+    },
+    "COLLAB": {
+      "BurnForPower": "Burn this tag for +3 Power (only one PC may burn)",
+      "BurnRejected": "Another PC is already burning a tag — \"{tag}\" was added without burning.",
+      "FellowshipTags": "Crew theme tags (+1 Power each)",
+      "GmMod": "MC modifier",
+      "GroupHint": "A single roll for the group. Each PC contributes one tag (+1 Power); one PC may burn a tag (+3). The outcome affects everyone.",
+      "GroupStarted": "Group action started — PCs may contribute a tag.",
+      "HelpRequested": "Help requested from your fellow PCs…",
+      "HelpTitle": "Help a Fellow PC",
+      "HelpingTags": "Helping (from fellow PCs):",
+      "SourceBackpack": "Loadout",
+      "WaitingContributions": "Waiting for PCs to contribute…"
+    },
+    "GM_CONFIRM": {
+      "GmTags": "MC Modifiers:",
+      "Rejected": "The MC rejected your roll. Adjust your selection and try again.",
+      "WaitingForGm": "Waiting for the MC's confirmation…"
+    },
+    "HELP": {
+      "BackpackSheet": "Loadout entries are edited directly on the character sheet (edit mode of the Loadout card). Use the Description tab for tooltip text.",
+      "FelllowshipThemeCardExplanation": "Use this shared card for crew power tags, weakness tags and theme specials. Enter the crew’s actual tags through its character sheets.",
+      "FellowshipCreation": "No Crew Theme Card is assigned. Create a new one, or assign an existing Crew Theme Card Actor.",
+      "MightyAspects": "Aspects in which this Challenge is Adventure or Greatness level (everything else is Origin). These are NOT tags — they tell the MC whether a Might differential (Favored/Imperiled) applies; they do not add to a roll.",
+      "NoBackpackEquipped": "No loadout equipped.",
+      "ChallengeAddon": "Define a reusable Power Set, choose Self, Mythos, or Noise, and drag it onto a Challenge. Its properties combine with the base Challenge in the locked sheet; edit or remove the attached copy in the Power Sets tab.",
+      "ChallengeTemplateDragNDrop": "Drag Power Set items onto this Challenge to attach independent copies. Edit or delete the attached copies in the Power Sets tab without changing the original items."
+    },
+    "HOW_TO_PLAY": {
+      "Title": "Mist Engine Rules Reference"
+    },
+    "LABELS": {
+      "Abandon": "Decay",
+      "CreateFellowshipThemecard": "Create Crew Theme Card",
+      "Improve": "Upgrade",
+      "Quest": "Motivation",
+      "RemoveFellowshipThemecard": "Remove Crew Theme Card Assignment",
+      "SelectFellowshipThemecard": "Select Crew Theme Card",
+      "SpecialImprovements": "Theme Specials",
+      "Npc": {
+        "powersets": "Power Sets"
+      }
+    },
+    "MOVES": {
+      "LEGEND": {
+        "detailed": {
+          "fail": "The MC introduces a consequence. It can change the situation, add a hindering tag or status, or remove a useful one.",
+          "neutral": "<p>You succeed and the MC introduces a consequence.</p><p>Spend Power to add or scratch a tag (2), add or reduce a status (1 per tier), or discover a useful detail (1).</p>",
+          "success": "<p>Spend Power to add or scratch a tag (2), add or reduce a status (1 per tier), or discover a useful detail (1).</p>"
+        },
+        "quick": {
+          "fail": "The MC introduces a consequence. It can change the situation, add a hindering tag or status, or remove a useful one.",
+          "neutral": "You succeed and the MC introduces a consequence.",
+          "success": "You achieve your goal. The MC may award a useful tag or status."
+        }
+      }
+    },
+    "NOTIFICATIONS": {
+      "AddedSpecialImprovement": "Added theme special {siName}",
+      "FellowshipThemecardUnavailable": "The assigned Crew Theme Card is no longer available. Assign another one or remove the assignment.",
+      "NoFellowshipThemecardFound": "No Crew Theme Card actors found. Use \"Create New\" to make one first.",
+      "NotAllowedToUploadFilesForCustomBackground": "You do not have permission to upload files. Please contact your MC.",
+      "SetQuest": "Set motivation to {quest}"
+    },
+    "OVERCOME": {
+      "HeroHint": "A tier-5 status has overcome this PC — they cannot act and lose control of the scene."
+    },
+    "OVERLAY": {
+      "SelectedHint": "Selected by the MC"
+    },
+    "PLACEHOLDERS": {
+      "QuestGoal": "Identity / Ritual / Itch",
+      "SpecialImprovementDescription": "Theme Special Description",
+      "SpecialImprovementName": "Theme Special Name"
+    },
+    "PLAYER_TUTORIAL": {
+      "BackpackContent": "Your loadout holds story tags for gear and useful items. Add an item, then select it in a roll to bring it to bear. Some items expire during downtime — the MC will let you know.",
+      "BackpackTitle": "The Loadout",
+      "BioNotesContent": "The Biography and Notes tabs are yours for the story — your PC's background, and private notes only you keep. Nothing here affects rolls; it's pure roleplay.",
+      "BurnWeaknessContent": "Click the small burn icon next to a power tag to mark it to burn: it grants +3 Power for that one roll, then stays scratched until it is recovered. Selected weakness tags count -1 Power — playing them drives the story and your PC's growth.",
+      "Description": "A short guided tour of your character sheet and how to play as a PC.",
+      "DiceDialogContent": "When you make a roll, this dialog opens. It lists the power tags and statuses you selected, folds in any scene tags, and totals your Power at a glance — then two dice are rolled and that Power is added. If another player is logged in, a 'Request Help' button also appears here: a fellow PC can contribute one of their tags to boost your roll (+1 Power each). With the MC's blessing you can also click a selected Weakness tag to flip it — it counts as +1 Power for this roll only.",
+      "EditModeContent": "In Edit Mode the cards open up: add themebooks with their power and weakness tags, motivations, theme specials, quintessences and loadout items. Cards can be dragged to reorder them or moved to the Other tab. Tip: Alt+T opens the Theme Kit selection for your PC.",
+      "EditModeTitle": "Edit Mode — Building Your PC",
+      "EditToggleContent": "This lock button in the title bar switches the sheet between Game Mode (locked — for playing and rolling) and Edit Mode (open — for building your PC). You'll spend most of play in Game Mode.",
+      "FellowshipContent": "The crew card tracks your bonds with the other PCs: relationship tags and companions. These help you support one another and can be recovered during downtime.",
+      "FellowshipTitle": "Crew",
+      "HelpingContent": "When a fellow PC requests help, a dialog pops up on your screen: contribute one of your tags to add +1 Power to their roll. In a group action started by the MC, every PC contributes one tag — and a single PC may burn one for +3. The outcome affects the whole group.",
+      "OtherTabContent": "Cards you don't need front-and-centre can be moved to the Other tab to keep your main view tidy — extra themes, quintessences or loadout, whatever you like.",
+      "QuintessencesContent": "Record your character’s Moments of Evolution on this card and track Evolution above them.",
+      "RollingContent": "These buttons drive play: Quick, Detailed and Reaction. Select the tags and statuses that apply, then roll — the dialog totals your Power automatically. You can also drag scene tags the MC shares into your roll. After a successful Detailed action you spend your Power directly on the chat card.",
+      "SacrificeContent": "A Sacrifice is a Quick outcome taken without any Power: you accept severe consequences to achieve something extraordinary. Use it when the moment calls for it — the MC may grant a modifier first.",
+      "ThemesContent": "Each theme records power tags, weakness tags and a motivation. In Game Mode, select the tags you want to bring into your roll. An outline marks each selected tag.",
+      "Title": "Mist Engine — PC Tour",
+      "WelcomeContent": "This is your character sheet — your PC's portrait, name and a short description at the top. Everything you need to play lives on this sheet. Use the arrow keys or the buttons to move through the tour.",
+      "WelcomeTitle": "Welcome, PC",
+      "QuintessencesTitle": "Moments of Evolution"
+    },
+    "QUESTIONS": {
+      "RemoveFellowshipThemecardConfirmation": "Are you sure you want to remove the Crew Theme Card assignment? This will not delete the Theme Card Actor, just unassign it from this character."
+    },
+    "ROLL": {
+      "CannotBurnFellowshipTag": "Crew theme tags are single-use: they are scratched when invoked and cannot be burnt for Power.",
+      "InvertedTagHint": "Inverted for this roll (MC's call)",
+      "ToggleChallengeInversion": "Invert for this roll only (MC's call)",
+      "TogglePowerAsWeakness": "Count as Weakness for this roll (MC's call)",
+      "ToggleWeaknessAsPower": "Count as Power for this roll (MC's call)"
+    },
+    "SACRIFICE": {
+      "Hint": "Making a Sacrifice is a Quick outcome without any Power: you accept severe Consequences to achieve something extraordinary. The MC may grant a modifier before you roll.",
+      "Modifier": "MC modifier",
+      "Title": "Go Out in a Blaze"
+    },
+    "SCENE_APP": {
+      "Weaknesses": "Weaknesses (MC)"
+    },
+    "SETTINGS": {
+      "SceneTagsOverlayStoryGM": "MC only",
+      "SceneTagsOverlayStoryTagsHint": "Whether the power and weakness tags of the scene's story themes appear in the overlay. Story themes are otherwise visible to the MC only."
+    },
+    "SheetLabels": {
+      "FellowshipThemecard": "Crew Theme Card",
+      "JournalEntry": ":Otherscape Journal",
+      "ChallengeAddon": "Power Set"
+    },
+    "THEMEBOOKS": {
+      "Backpack": "Loadout",
+      "Fellowship": "Crew",
+      "FellowshipRelationship": "Crew Relationship",
+      "SpecialImprovements": "Theme Specials",
+      "Quintessences": "Moments of Evolution"
+    },
+    "THEMEKITS": {
+      "Quest": "Motivation",
+      "SpecialImprovements": "Theme Specials"
+    },
+    "TUTORIAL": {
+      "CampingContent": "This tool uses the Mist Engine camping procedure for downtime. With a scene active, set safehouse tags, review the crew’s loadout and choose rest, reflection or a downtime action for each PC.",
+      "CampingTitle": "Downtime (Mist Engine)",
+      "ChallengesContent": "Challenge (NPC) sheets hold limits, mighty aspects and threats. When a status reaches a limit's tier the challenge shows an 'Overcome' badge; PCs are overcome by a tier-5 status. Statuses stack on their tracking card automatically. During a roll, a challenge status can also be flipped against the PCs for that single roll — no need to edit the challenge itself.",
+      "CharSheetContent": "This is a PC's sheet — themes and their power tags, the loadout, quintessences, the crew and rotes. In Game Mode, players click a power tag to select it, then roll from the buttons at the top.",
+      "CompendiumsContent": "The installed Mist Engine compendiums contain Legend in the Mist themebooks, pregens, example actors and system documentation.",
+      "Description": "A short guided tour of the MC tools this system adds to Foundry.",
+      "EditModeContent": "In Edit Mode the cards become editable: add themebooks, power and weakness tags, motivations, theme specials and loadout items. Cards can be dragged to reorder them or moved to the Other tab.",
+      "EditToggleContent": "This lock button in the title bar toggles the sheet between Game Mode (locked — for playing and rolling) and Edit Mode (open — for building the character). Players use Edit Mode to fill in themes, tags, motivations and the loadout.",
+      "FellowshipCardContent": "Create or assign a shared Crew Theme Card from a player-owned PC sheet. PCs linked to the card can draw on its tags. The Mist Engine downtime tool can also track crew activities.",
+      "FellowshipCardTitle": "Crew Theme Card",
+      "GroupActionContent": "This Mist Engine tool resolves a group action with one roll. Each PC can contribute one tag for +1 Power. One PC can burn a tag for +3, and the MC can apply a modifier.",
+      "RollConfirmContent": "In the system settings you can enable 'MC Roll Confirmation': player rolls are then sent to you for approval first, showing their full tag selection before the dice fall.",
+      "RollConfirmTitle": "MC Roll Confirmation",
+      "Title": "Mist Engine — MC Tour",
+      "ToolsContent": "The Mist Engine scene controls open the Scene Tracker, Downtime, Acting Together and the Mist Engine Rules Reference.",
+      "ToolsTitle": "Your MC Toolbar",
+      "WelcomeTitle": "Welcome, MC",
+      "HowToPlayTitle": "Mist Engine Rules Reference",
+      "HowToPlayContent": "Press Ctrl+H to open the built-in Legend in the Mist rules reference. Replay this tour from Settings → Tour Management."
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "litm-fellowship-themecard": "Crew Theme Card"
+    },
+    "Item": {
+      "backpack": "Loadout",
+      "quintessence": "Moment of Evolution",
+      "challenge-addon": "Power Set"
+    }
+  },
+  "OTHERSCAPE_MIST_SKIN": {
+    "ThemeType": {
+      "Noise": "OS - Noise",
+      "Mythos": "OS - Mythos",
+      "Self": "OS - Self"
+    },
+    "Evolution": "Evolution",
+    "ThemebookChoice": "Themebook",
+    "Motivation": {
+      "Identity": "Identity",
+      "Ritual": "Ritual",
+      "Itch": "Itch"
+    },
+    "Blaze": {
+      "Title": "Go Out in a Blaze",
+      "Hint": "Choose a degree of sacrifice. Before rolling, choose the affected theme when required.",
+      "Degree": "Degree of Sacrifice",
+      "Outcome": "Outcome",
+      "Consequences": "Consequences",
+      "Failure": "You do not achieve the intended outcome. Apply the consequences of the selected degree.",
+      "Error": "Unable to complete Go Out in a Blaze. See the console for details.",
+      "significant": {
+        "Name": "Significant",
+        "Outcome": "Overcome an equal opponent. Survive a tough situation. Reshape the scene.",
+        "Consequences": "Burn all tags in a theme (choose which one before rolling). Burn only two tags on a strong hit.",
+        "StrongConsequences": "Burn only two tags in the theme chosen before rolling."
+      },
+      "noReturn": {
+        "Name": "No Return",
+        "Outcome": "Overcome a stronger opponent. Survive a dire situation. Reshape the neighborhood.",
+        "Consequences": "Replace a theme (choose which one before rolling). On a strong hit, burn all tags in the chosen theme instead.",
+        "StrongConsequences": "Burn all tags in the theme chosen before rolling instead of replacing it."
+      },
+      "ultimate": {
+        "Name": "Ultimate",
+        "Outcome": "Overcome a mighty opponent. Survive a hopeless situation. Leave a mark on the Megacity.",
+        "Consequences": "Take a tier-6 status. On a strong hit, replace a theme instead (choose which one before rolling).",
+        "StrongConsequences": "Replace the theme chosen before rolling instead of taking a tier-6 status."
+      },
+      "inescapable": {
+        "Name": "Inescapable",
+        "Outcome": "Overcome an army or an Avatar, for now. Save someone else from an impossible situation. Leave a mark on the world.",
+        "Consequences": "Take a tier-6 status regardless of roll."
+      }
+    },
+    "RollWith": {
+      "self": "Roll with Self",
+      "mythos": "Roll with Mythos",
+      "noise": "Roll with Noise",
+      "Hint": "Your theme count replaces positive tags. Negative tags and the highest positive and negative statuses still apply. Tags cannot be burned for Power. The MC decides whether this action fits the domain. General affinity does not grant specific abilities.",
+      "ActionType": "Action type",
+      "CleanupError": "The roll completed, but some selections could not be cleared. Check the console."
+    },
+    "Essence": {
+      "Title": "Essence",
+      "Categories": {
+        "self": "Self",
+        "mythos": "Mythos",
+        "noise": "Noise"
+      },
+      "incomplete": {
+        "Name": "Undetermined",
+        "Ability": "Assign all four core themes to Self, Mythos, or Noise to determine your Essence."
+      },
+      "sourcesRequired": {
+        "Name": "Mythos — Sources required",
+        "Ability": "Enter a Source for every Mythos theme in edit mode. Four themes of the same Source make an Avatar; different Sources make a Conduit."
+      },
+      "SaveError": "The Essence update could not be saved.",
+      "SessionUsed": "Ability used this session",
+      "SelfUsed": "Self used this session",
+      "NoiseUsed": "Noise used this session",
+      "SceneUsed": "Miss converted this scene",
+      "ResetSession": "Reset session uses",
+      "ResetScene": "Reset scene use",
+      "Agenda": "Agenda",
+      "RecoverTags": "Recover burned power tags",
+      "Source": "Source",
+      "AddSelf": "Add Self to next eligible roll",
+      "AddMythos": "Add Mythos to next eligible roll",
+      "AddNoise": "Add Noise to next eligible roll",
+      "AddBoth": "Add Self + Noise to next eligible roll",
+      "CancelBonus": "Cancel prepared bonus",
+      "BonusUnavailable": "The prepared Essence bonus changed or is already reserved. Review the roll and try again.",
+      "BonusNote": "{essence}: +{power} Power prepared for the next eligible roll. Confirm the ability’s fictional conditions before rolling.",
+      "nexus": {
+        "Name": "Nexus",
+        "Ability": "When you next replace a theme, if you are still a Nexus after the transformation, it starts as a full theme rather than a nascent one.",
+        "Description": "You have touched on the full gamut of experiences which living in this age can offer. As such, you adapt to change faster than others."
+      },
+      "spiritualist": {
+        "Name": "Spiritualist",
+        "Ability": "Once per session, add your Mythos theme count to the Power of an action primarily powered by Self themes, or your Self count to an action primarily powered by Mythos themes. When rolling with Self or Mythos, you may instead roll with both (base Power 4). Prepare the complementary category below. Negative tags and statuses still apply.",
+        "Description": "You have shunned technology or at least kept it from encroaching on your soul, valuing above all the human spirit and its connection to the mystery of the mythical."
+      },
+      "cyborg": {
+        "Name": "Cyborg",
+        "Ability": "When resisting or shaking off mythical forces without tangible or measurable effects, add your Self or Noise theme count to Power. You may use Self once per session and Noise once per session, separately or together.",
+        "Description": "You are flesh, wires, and data, celebrating the freedom of the digital universe or moving to gain full control over the material world, paying no heed to this new and incalculable “magic” – a bump on the road of humanity’s nonstop technological progress."
+      },
+      "transhuman": {
+        "Name": "Transhuman",
+        "Ability": "Once per scene, when invoking both mythical and technological tags in the same action, regardless of source, you may change a miss (6 or less) into a mixed hit (7–9). Apply the outcome change with the MC and mark the use below.",
+        "Description": "In your search for the edge of what is possible through magic and tech, you’ve abandoned all semblance of humanity – or perhaps you had none to begin with. Experimenting with the paradoxical marriage of legend and cyber is the ultimate expression of your being."
+      },
+      "real": {
+        "Name": "Real",
+        "Ability": "Whenever you act directly to uphold or protect one of your Identities, you may roll with Self instead of counting positive tags. Use the Roll with Self control.",
+        "Description": "In a world beleaguered by temptations to become more, you have chosen to remain yourself, eschewing fancy baubles and the pull of past narratives. Whether you did so out of stubbornness, lack of vision, or something far deeper, you are who you are, and no outside force – mythical or technological – can say otherwise."
+      },
+      "avatar": {
+        "Name": "Avatar",
+        "Ability": "Suspend all Rituals and choose an Agenda. Defying it even once immediately replaces all your themes; new themes cannot include Mythos themes of your lost Source. While an Avatar, you may instantly recover burned power tags. Theme replacement remains under player and MC control.",
+        "Description": "You and your Source have become one. Now, you are a Source unto yourself, a beacon of your legend on earth."
+      },
+      "conduit": {
+        "Name": "Conduit",
+        "Ability": "You may replace themes at will with Mythos themes. Any Source in your possession or nearby can become a new Mythos theme, starting as a full theme rather than a nascent one. Coordinate replacements with the MC.",
+        "Description": "You are no longer a person; you have given yourself up to become a vessel for mythical forces, sacred and unspeakable, harmonizing and clashing within you."
+      },
+      "singularity": {
+        "Name": "Singularity",
+        "Ability": "Psychological effects and intangible or unmeasurable mythical effects do not affect you. You can interface with all information regardless of medium, and roll with Noise to search it and manipulate recorded information. Use the Roll with Noise control.",
+        "Description": "You are a new life form. You have left humanity and its blathering stories behind, venturing into an existence of pure informational truth, beyond the illusion of meaning."
+      }
+    },
+    "PowerSets": {
+      "Singular": "Power Set",
+      "ThemeType": "Themebook type",
+      "Description": "Description",
+      "self": "Self",
+      "mythos": "Mythos",
+      "noise": "Noise",
+      "unassigned": "Unassigned",
+      "Help": "Drag Power Set items onto this Challenge to attach independent copies. Edit or delete the attached copies in the Power Sets tab without changing the original items.",
+      "Edit": "Edit",
+      "Delete": "Delete",
+      "Limits": "Limits",
+      "Tags": "Tags & Statuses",
+      "Specials": "Specials",
+      "Aspects": "Mighty Aspects",
+      "Threats": "› Threats / » Consequences",
+      "Secrets": "Secrets",
+      "AlreadyAttached": "This Power Set is already attached to the Challenge.",
+      "DeleteError": "The Power Set could not be removed.",
+      "Legacy": "This Power Set was merged by the original system before modular attachment was enabled. Only its name was retained. Removing this record does not undo previously merged Challenge statistics.",
+      "RemoveRecord": "Remove record",
+      "TagUpdateError": "The tag or status could not be updated.",
+      "DeleteTag": "Delete tag or status",
+      "DeleteSourceHelp": "Delete this entry from its displayed source? A same-name entry from another source may remain.",
+      "TagSource": "Source: {name}",
+      "DeleteTagHelp": "Remove this tag or status from the base Challenge and any attached Power Sets that contribute the same name?",
+      "EditTag": "Edit tag or status",
+      "TagName": "Name",
+      "IsStatus": "Status",
+      "Tier": "Tier",
+      "Positive": "Positive",
+      "Save": "Save"
+    },
+    "DefaultIcons": {
+      "UpdateError": "Some default icons could not be updated. See the console for details."
+    },
+    "CustomTextColor": {
+      "Label": "Custom Text Color",
+      "SaveError": "The custom text color could not be saved.",
+      "Clear": "Clear Custom Color"
+    }
+  }
+}

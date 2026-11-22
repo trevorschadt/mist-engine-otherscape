@@ -1,0 +1,71 @@
+/* Otherscape categories and their legacy Mist Engine visual aliases. */
+body {
+  --os-noise-icon: url("../icons/noise.svg");
+  --os-mythos-icon: url("../icons/mythos.svg");
+  --os-self-icon: url("../icons/self.svg");
+  --os-noise-banner: linear-gradient(105deg, #154967, #087299);
+  --os-mythos-banner: linear-gradient(105deg, #482774, #743db0);
+  --os-self-banner: linear-gradient(105deg, #70203d, #a92050);
+}
+
+:is(.themebook-icon.os-noise, .themebook-icon.litm-origin, .tag-icon-litm-origin, .icon-origin,
+    .header-icon.origin, .might-icon.origin) { --os-category-icon: var(--os-noise-icon); }
+
+:is(.themebook-icon.os-mythos, .themebook-icon.litm-adventure, .tag-icon-litm-adventure, .icon-adventure,
+    .header-icon.adventure, .might-icon.adventure) { --os-category-icon: var(--os-mythos-icon); }
+
+:is(.themebook-icon.os-self, .themebook-icon.litm-greatness, .tag-icon-litm-greatness, .icon-greatness,
+    .header-icon.greatness, .might-icon.greatness) { --os-category-icon: var(--os-self-icon); }
+
+.mist-engine :is(.tag-icon-litm-origin, .tag-icon-litm-adventure, .tag-icon-litm-greatness),
+.journal-entry-content :is(.icon-origin, .icon-adventure, .icon-greatness),
+.journal-entry-content .themekit-big-box .heading .header-icon:is(.origin, .adventure, .greatness) {
+  mask: var(--os-category-icon) center / contain no-repeat;
+}
+
+.mist-engine :is(.tag-icon-litm-origin, .tag-icon-litm-adventure, .tag-icon-litm-greatness) {
+  width: 15px;
+}
+
+:is(.mist-engine, .journal-entry-content) i.might-icon:is(.origin, .adventure, .greatness) {
+  mask: var(--os-category-icon) center / contain no-repeat;
+  background: currentColor;
+  margin-inline-end: .2em;
+}
+
+/* In play mode the icon exposes the actual type. In edit mode the template
+   omits the icon, so use its card color class (which defaults to the type). */
+.mist-engine .themebook-style:is(.os-noise, .litm-origin),
+.mist-engine .themebook-style h2.theme-name:has(> .themebook-icon:is(.os-noise, .litm-origin)) {
+  --os-category-banner: var(--os-noise-banner);
+  --os-category-text: #fff;
+}
+
+.mist-engine .themebook-style:is(.os-mythos, .litm-adventure),
+.mist-engine .themebook-style h2.theme-name:has(> .themebook-icon:is(.os-mythos, .litm-adventure)) {
+  --os-category-banner: var(--os-mythos-banner);
+  --os-category-text: #fff;
+}
+
+.mist-engine .themebook-style:is(.os-self, .litm-greatness),
+.mist-engine .themebook-style h2.theme-name:has(> .themebook-icon:is(.os-self, .litm-greatness)) {
+  --os-category-banner: var(--os-self-banner);
+  --os-category-text: #fff;
+}
+
+/* A variable theme can carry a manual banner color. In play mode its actual
+   type takes precedence, just as it does for the three categorized themes. */
+.mist-engine .themebook-style h2.theme-name:has(> .themebook-icon.litm-variable) {
+  --os-category-banner: initial;
+  --os-category-text: initial;
+}
+
+.mist-engine .themebook-style h2.theme-name > i.themebook-icon:is(.os-noise, .os-mythos, .os-self, .litm-origin, .litm-adventure, .litm-greatness) {
+  width: 16px;
+  height: 16px;
+  margin-top: 0;
+  mask: var(--os-category-icon) center / contain no-repeat;
+  background: currentColor;
+  filter: none;
+  opacity: 1;
+}

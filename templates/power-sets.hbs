@@ -1,0 +1,22 @@
+<section id="{{partId}}" class="tab {{tabs.powersets.cssClass}} scrollable os-power-sets-tab" data-tab="powersets" data-group="npc-sheet">
+  {{#if osCanEditPowerSets}}<p class="os-power-sets-help">{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Help"}}</p>{{/if}}
+  <div class="os-power-sets-grid">
+  {{#each osPowerSets}}
+    <article class="os-power-set" data-os-category="{{category}}">
+      <div class="os-power-set-category-label">{{categoryLabel}} {{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Singular"}}</div>
+      <header class="os-power-set-heading"><i class="os-power-set-icon" aria-hidden="true"></i><h2>{{name}}</h2>{{#if rating}}<span class="os-power-set-rating">+{{rating}} <i class="os-power-set-reticle" aria-hidden="true"></i></span>{{/if}}</header>
+      {{#if ../osCanEditPowerSets}}<div class="os-power-set-tools"><button type="button" class="os-edit-power-set" data-item-id="{{id}}">{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Edit"}}</button><button type="button" class="os-delete-power-set" data-item-id="{{id}}">{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Delete"}}</button></div>{{/if}}
+      {{#if roles}}<p class="os-power-set-roles">{{roles}}</p>{{/if}}
+      {{{descriptionHTML}}}
+      {{#if limits}}<h3>{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Limits"}}</h3><div class="os-power-set-limits">{{#each limits}}<span class="os-power-set-limit">{{name}} <strong>{{value}}</strong></span>{{#if html}}<div class="os-power-set-progress">{{{html}}}</div>{{/if}}{{/each}}</div>{{/if}}
+      {{#if tags}}<h3>{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Tags"}}</h3><p>{{#each tags}}<mark class="{{#if isStatus}}status{{else}}tag{{/if}}">{{label}}</mark> {{/each}}</p>{{/if}}
+      {{#if features}}<h3>{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Specials"}}</h3>{{#each features}}<div class="os-power-set-feature"><strong>{{name}}</strong> {{{html}}}</div>{{/each}}{{/if}}
+      {{#if aspects}}<h3>{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Aspects"}}</h3>{{#each aspects}}<p>{{aspect}}</p>{{/each}}{{/if}}
+      {{#if threats}}<h3>{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Threats"}}</h3>{{#each threats}}<div class="os-power-set-threat"><strong>{{name}}</strong><div class="os-power-set-threat-description">› {{{html}}}</div>{{#each consequences}}<div class="os-power-set-consequence">» {{{this}}}</div>{{/each}}</div>{{/each}}{{/if}}
+      {{#if list}}<h3>{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Threats"}}</h3>{{#each list}}<div class="os-power-set-consequence">» {{{this}}}</div>{{/each}}{{/if}}
+      {{#if secrets}}<h3>{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Secrets"}}</h3>{{#each secrets}}<div><strong>{{name}}</strong> {{{html}}}</div>{{/each}}{{/if}}
+    </article>
+  {{/each}}
+  {{#each osLegacyPowerSets}}<article class="os-power-set" data-os-category="unassigned"><h2>{{name}}</h2><p>{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.Legacy"}}</p>{{#if ../osCanEditPowerSets}}<button type="button" class="os-delete-power-set" data-legacy-index="{{index}}">{{localize "OTHERSCAPE_MIST_SKIN.PowerSets.RemoveRecord"}}</button>{{/if}}</article>{{/each}}
+  </div>
+</section>

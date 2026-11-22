@@ -1,0 +1,795 @@
+/* Use the nearest explicit Foundry theme for surfaces with both palettes. */
+:where(.theme-light) { --os-interface-color-scheme: light; }
+:where(.theme-dark) { --os-interface-color-scheme: dark; }
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Exo 2";
+  src: url("../fonts/Exo2-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Exo 2";
+  src: url("../fonts/Exo2-Italic-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Scope tokens to Mist Engine surfaces, including apps rendered outside sheets. */
+:is(.mist-engine, .character-token-overlay, .litm-sto, .roll-card, .consequence-container, .journal-entry-content) {
+  --os-ink: #14123b;
+  --os-muted: #465869;
+  --os-night: #1c2432;
+  --os-surface: #eef0f2;
+  --os-panel: #f9fafb;
+  --os-line: #8895a4;
+  --os-steel: #3b4c63;
+  --os-lime: #ddff66;
+  --os-tag: #fffa99;
+  --os-status: #dbf1d4;
+  --os-weakness: #e7f2a8;
+  --os-limit: #ffbcd2;
+  --os-location: #b6cde6;
+  --os-frame: #303b4b;
+  --os-accent-purple: #684b95;
+  --os-grid: repeating-linear-gradient(0deg, #65748912 0 1px, transparent 1px 4px),
+             linear-gradient(90deg, #65748910 1px, transparent 1px);
+
+  --litm-font-heading: "Bebas Neue", "Arial Narrow", sans-serif;
+  --litm-font-accent: "IBM Plex Mono", Consolas, monospace;
+  --litm-font-text: "Exo 2", system-ui, sans-serif;
+  --litm-color-bg: var(--os-surface);
+  --litm-color: var(--os-ink);
+  --litm-color-alt-bg: #e1e8f5;
+  --litm-color-dark-bg: var(--os-night);
+  --litm-color-accent-bg: var(--os-night);
+  --litm-color-accent: #f2f7ff;
+  --litm-color-accent-2: var(--os-steel);
+  --litm-color-accent-3: var(--os-accent-purple);
+  --litm-color-primary-bg: var(--os-panel);
+  --litm-color-primary: var(--os-ink);
+  --litm-color-weakness: #752349;
+  --litm-color-weakness-bg: var(--os-weakness);
+  --litm-color-tag-bg: var(--os-tag);
+  --litm-color-status-bg: var(--os-status);
+  --litm-color-limit-bg: var(--os-limit);
+  --litm-tab-text-color: #e9f0ff;
+}
+
+/* Shared chrome for Mist Engine sheets and dialogs. */
+.mist-engine:is(.sheet, .dialog) {
+  font-family: var(--litm-font-text);
+  border-color: #65768a;
+  border-radius: 4px;
+}
+
+.mist-engine:is(.sheet, .dialog) > .window-header {
+  background: linear-gradient(105deg, #303b4b, #1c2432 65%);
+  color: #f2f7ff;
+  border-bottom: 2px solid #ddff66;
+  --color-text-emphatic: #fff;
+  --color-text-primary: #f2f7ff;
+  --color-text-secondary: #dae3f6;
+}
+
+.mist-engine:is(.sheet, .dialog) > .window-header .window-title {
+  font: 400 1.2rem var(--litm-font-heading);
+  letter-spacing: .055em;
+}
+
+.mist-engine.sheet.actor:is(.litm-character, .litm-character.litm-compact) .window-content,
+.mist-engine.sheet.actor:is(.npc, .litm-journey, .litm-fellowship-themecard) .window-content,
+.mist-engine.sheet:is(.item, .themebook) .window-content,
+.mist-engine.dialog > section.window-content,
+.mist-engine.dialog#scene-data-app > section.window-content,
+.mist-engine.dialog:is(#dice-roll-app, #camping-app, #group-action-app) > section.window-content {
+  color-scheme: light;
+  color: var(--os-ink);
+  font-family: var(--litm-font-text);
+  background-color: var(--os-surface);
+  background-image: var(--os-grid);
+  background-size: 24px 24px;
+  background-repeat: repeat;
+  border-image: none;
+  border-color: #c8d2e5;
+  --color-text-emphatic: var(--os-ink);
+  --color-text-primary: var(--os-ink);
+  --color-text-secondary: var(--os-muted);
+  --color-text-subtle: var(--os-muted);
+  --color-form-label: var(--os-ink);
+  --color-form-label-hover: var(--os-steel);
+  --color-form-hint: var(--os-muted);
+  --color-form-hint-hover: var(--os-ink);
+  --color-select-option-bg: var(--os-panel);
+  --color-fieldset-border: var(--os-line);
+}
+
+/* The full character sheet supplies custom artwork as an inline image.
+   Apply the tiled grid sizing only when that artwork is absent. */
+.mist-engine.sheet.actor.litm-character:not(.litm-compact) .window-content[style*="background-image"] {
+  background-color: var(--os-night);
+  background-position: left top;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.mist-engine :is(h2, h3, h4, .npc-subtitle-text, .scene-app-actor-header) {
+  font-family: var(--litm-font-heading);
+  font-weight: 600;
+  color: var(--os-ink);
+}
+
+.mist-engine.sheet.actor.litm-character h1.charname {
+  font-family: var(--litm-font-heading);
+  font-weight: 600;
+}
+
+.mist-engine.sheet.actor.litm-character .window-content:not([style*="background-image"]) h1.charname {
+  color: var(--os-ink);
+}
+
+.mist-engine .window-content :is(input, select, textarea):not([type="range"]) {
+  --input-background-color: #ffffffdd;
+  --input-border-color: var(--os-line);
+  --input-text-color: var(--os-ink);
+  --input-placeholder-color: var(--os-muted);
+  --input-focus-outline-color: var(--os-steel);
+  font-family: var(--litm-font-text);
+}
+
+.mist-engine .window-content :is(input, select, textarea):focus-visible,
+.mist-engine .window-content :is(button, a):focus-visible {
+  outline: 2px solid var(--os-steel);
+  outline-offset: 1px;
+}
+
+.mist-engine .window-content :is(button, a.button) {
+  --button-background-color: #e1e8f5;
+  --button-border-color: var(--os-line);
+  --button-text-color: var(--os-ink);
+  --button-hover-background-color: var(--os-steel);
+  --button-hover-text-color: #fff;
+  --button-hover-border-color: var(--os-steel);
+}
+
+.mist-engine .window-content .roll-button {
+  font-family: var(--litm-font-heading);
+  letter-spacing: .05em;
+  color: #fff;
+  background: #28394a;
+  border-color: #677d91;
+}
+
+.mist-engine .window-content .roll-button:is(:hover, :focus-visible) {
+  color: #fff;
+  background: var(--os-steel);
+}
+
+.mist-engine :is(.litm-character-sheet-tabs, .litm-journey-sheet-tabs) {
+  background: var(--os-night);
+  border-bottom: 2px solid #a5c336;
+  font-family: var(--litm-font-heading);
+}
+
+.mist-engine .sheet-tabs a.active {
+  color: var(--os-lime);
+  text-shadow: none;
+}
+
+/* Cards and tracking panels. Preserve the original controls and drag handles. */
+:is(.mist-engine, .character-token-overlay) :is(
+  .container-paper-background-with-border, .container-card-with-border,
+  .container-themebook-with-border, .text-container-300, .text-container-500,
+  .text-container-large-paper-background, .text-container-long-paper-background,
+  .floating-status-container-character
+) {
+  font-family: var(--litm-font-text);
+  color: var(--os-ink);
+  border: 1px solid var(--os-line);
+  border-top: 3px solid #7e8e9c;
+  border-image: none;
+  border-radius: 3px;
+  background: var(--os-panel);
+  box-shadow: 0 2px 5px #21213c20;
+  padding: 7px;
+}
+
+:is(.mist-engine, .character-token-overlay) .themebook-container .themebook-style h2 {
+  background: var(--os-category-banner, var(--os-lime));
+  color: var(--os-category-text, var(--os-ink));
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%);
+  font: 400 .96rem/1.15 var(--litm-font-heading);
+  letter-spacing: .045em;
+  text-transform: uppercase;
+  height: auto;
+  min-height: 26px;
+  overflow-wrap: anywhere;
+  margin: 0 0 6px;
+  padding: 4px 6px;
+}
+
+:is(.mist-engine, .character-token-overlay) .themebook-container .themebook-style h2
+  :is(.card-drag-handle, a) { color: inherit; }
+
+:is(.mist-engine, .character-token-overlay) .themebook-container .themebook-icon {
+  filter: brightness(0);
+  opacity: .8;
+}
+
+.mist-engine .themebook-container :is(.quest-container h3, .quest-container .quest-text) {
+  font-family: var(--litm-font-text);
+  color: var(--os-ink);
+}
+
+.mist-engine .themebook-container .quest-container h3 {
+  background: #ddff66;
+  color: var(--os-steel);
+}
+
+.mist-engine .themebook-style :is(.development-partial-container, .fellowship-promises-container) {
+  font-family: var(--litm-font-accent);
+  color: var(--os-muted);
+}
+
+.mist-engine .themebook-style .development-partial-container .marker {
+  color: #647695;
+}
+
+.mist-engine .themebook-style .development-partial-container .marker.checked {
+  color: var(--os-steel);
+}
+
+.mist-engine :is(.themebooks-container-stylized > :nth-child(2), .themebooks-container-stylized > :nth-child(3),
+  .backpack-stylized, .fellowship-themebook-stylized) {
+  inset: auto;
+  rotate: none;
+}
+
+.mist-engine :is(.themebooks-container-stylized > :nth-child(2), .themebooks-container-stylized > :nth-child(3),
+  .backpack-stylized, .fellowship-themebook-stylized)::before {
+  background-image: none;
+}
+
+.mist-engine :is(.litm-pc-powertag, .litm-pc-storytag, .litm-pc-weakness, .litm-pc-fellowship-relationship,
+  .litm-pc-fellowship-relationship-companion, .litm-pc-quintessence, .special-improvement-label) {
+  font-family: var(--litm-font-text);
+  color: var(--os-ink);
+}
+
+.mist-engine .litm-pc-weakness { color: #752349; }
+
+.mist-engine :is(.litm-pc-powertag, .litm-pc-storytag).burned,
+.mist-engine .litm-pc-fellowship-relationship.scratched {
+  color: #596681;
+  text-decoration: line-through;
+}
+
+.mist-engine :is(.litm-pc-powertag, .litm-pc-storytag, .litm-pc-weakness,
+  .litm-pc-fellowship-relationship, .fts-selectable).selected::before {
+  inset: -2px -4px;
+  background: none;
+  border: 1px solid #52661b;
+  border-left: 3px solid #52661b;
+  border-radius: 2px;
+}
+
+.mist-engine nav.tabs [data-tab] {
+  font-family: var(--litm-font-heading);
+  letter-spacing: .04em;
+}
+
+.mist-engine nav.tabs :is([data-group="litm-character-sheet"], [data-group="litm-journey-sheet"]).active {
+  color: var(--os-lime);
+  box-shadow: inset 0 -2px var(--os-lime);
+}
+
+:is(.mist-engine, .character-token-overlay, .litm-sto, .roll-card, .consequence-container, .journal-entry-content) :is(
+  mark.tag, mark.status, mark.weakness, mark.limit, mark.location, mark.triggered-scene,
+  .fts-input-name.tag, .fts-input-name.status,
+  .litm-sto-tag.tag, .litm-sto-tag.status, .litm-sto-tag.weakness
+) {
+  background: var(--os-chip, var(--os-tag));
+  border: 1px solid #59678366;
+  border-radius: 3px;
+  color: var(--os-ink);
+  font-family: var(--litm-font-text);
+  box-shadow: none;
+}
+
+:is(.mist-engine, .character-token-overlay, .litm-sto, .roll-card, .consequence-container, .journal-entry-content)
+  :is(mark.status, mark.tag.green, .fts-input-name.status, .litm-sto-tag.status) { --os-chip: var(--os-status); }
+
+:is(.mist-engine, .character-token-overlay, .litm-sto, .roll-card, .consequence-container, .journal-entry-content)
+  :is(mark.weakness, mark.tag.orange, .fts-input-name.tag.negative, .litm-sto-tag.tag.negative, .litm-sto-tag.weakness) { --os-chip: var(--os-weakness); }
+
+:is(.mist-engine, .character-token-overlay, .litm-sto, .roll-card, .consequence-container, .journal-entry-content)
+  :is(mark.limit, mark.tag.red) { --os-chip: var(--os-limit); }
+
+.litm-sto {
+  background: linear-gradient(100deg, #202a38ee, #303b4bea);
+  border-inline-start: 2px solid #ddff66;
+  color: #f2f7ff;
+  font-family: var(--litm-font-text);
+}
+
+.litm-sto :is(.litm-sto-caption, .litm-sto-theme-name) {
+  font-family: var(--litm-font-accent);
+  color: var(--os-lime);
+}
+
+.litm-sto .litm-sto-tag.selected {
+  outline: 2px solid var(--os-lime);
+  outline-offset: 1px;
+}
+
+/* The guide uses inline italic highlights, with color tied to the data type. */
+:is(.mist-engine, .roll-card, .journal-entry-content, .consequence-container)
+  mark:is(.tag, .status, .weakness, .limit, .location, .triggered-scene) {
+  border: 0;
+  font-style: italic;
+  box-decoration-break: clone;
+  white-space: normal;
+}
+
+:is(.mist-engine, .roll-card, .journal-entry-content) mark:is(.location, .triggered-scene) {
+  --os-chip: var(--os-location);
+  font-style: normal;
+}
+
+/* Screen-friendly versions of the guide's cut corners and dark card frames.
+   Keep form fields on the light surface in edit mode. */
+:is(.mist-engine, .character-token-overlay)
+  .themebook-container.container-themebook-with-border:not(:has(input[type="text"], textarea, select)),
+.mist-engine .npc-beautified-container-stats {
+  --os-card-text: #f3f5f8;
+  --os-card-muted: #c8d3de;
+  background: linear-gradient(140deg, #343e4d, var(--os-frame) 45%, #202a38);
+  color: var(--os-card-text);
+  border: 1px solid #758498;
+  border-radius: 8px 2px;
+  box-shadow: inset 0 0 0 2px #19212c, 0 2px 6px #14123b38;
+  padding: 8px;
+}
+
+:is(.mist-engine, .character-token-overlay) .themebook-container :is(
+  .litm-pc-powertag, .litm-pc-storytag, .litm-pc-weakness, .litm-pc-fellowship-relationship,
+  .litm-pc-fellowship-relationship-companion, .litm-pc-quintessence, .special-improvement-label,
+  .quest-container .quest-text, .development-partial-container, .fellowship-promises-container
+) {
+  color: var(--os-card-text, var(--os-ink));
+}
+
+:is(.mist-engine, .character-token-overlay) .themebook-container
+  :is(.litm-pc-weakness, .development-partial-container .marker.checked) {
+  color: var(--os-card-muted, var(--os-steel));
+}
+
+.mist-engine .themebook-container :is(.burned, .scratched, .expired) {
+  color: var(--os-card-muted, var(--os-muted));
+  text-decoration: line-through;
+}
+
+.mist-engine .themebook-container :is(.litm-pc-powertag, .litm-pc-storytag, .litm-pc-weakness,
+  .litm-pc-fellowship-relationship).selected::before {
+  border-color: var(--os-card-muted, #52661b);
+}
+
+.mist-engine :is(.npc-subtitle-text, .themebook-section-header, .special-improvement-section-label) {
+  font-family: var(--litm-font-heading);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.mist-engine .npc-beautified-container-stats .npc-subtitle-text {
+  color: var(--os-lime);
+  text-shadow: none;
+  white-space: normal;
+}
+
+.mist-engine .npc-subtitle-container-c::before,
+.mist-engine .npc-subtitle-container-c::after {
+  background: #8292a4;
+}
+
+.mist-engine .npc-threats-and-consequences-container {
+  color: inherit;
+  font-family: var(--litm-font-text);
+}
+
+.mist-engine .npc-threats-and-consequences-container .entry-name {
+  color: var(--os-ink);
+  background: var(--os-lime);
+}
+
+.mist-engine .npc-threats-and-consequences-container .entry-header strong {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.mist-engine .npc-threats-and-consequences-container li.entry-item {
+  background-image: none;
+  padding-inline-start: .4em;
+  display: list-item;
+  margin-inline-start: 1.25em;
+  list-style: "»";
+  font-weight: 700;
+}
+
+.mist-engine .npc-beautified-container-stats :is(
+  .npc-special-feature-name, .npc-secret-name, .npc-limit-consequence,
+  .npc-limits-list, .npc-mighty-aspect-item, .npc-mighty-aspects-list
+) {
+  color: var(--os-card-text);
+  font-family: var(--litm-font-text);
+}
+
+.mist-engine .npc-special-feature-name { font-weight: 700; }
+
+.mist-engine.sheet.actor.npc h1.npc-name {
+  font-family: var(--litm-font-heading);
+  font-weight: 400;
+  color: var(--os-ink);
+}
+
+.mist-engine .npc-beautified-container-stats .npc-limit-item .limit-value {
+  background: var(--os-limit);
+  color: var(--os-ink);
+  font-family: var(--litm-font-accent);
+  margin: 0;
+  padding: 0 3px;
+  width: auto;
+  min-width: 1.25em;
+  border-radius: 2px;
+}
+
+.mist-engine .npc-beautified-container-stats .npc-limit-item .limit-value::before {
+  content: ":";
+}
+
+.journal-entry-content :is(h1, h2) {
+  font-family: var(--litm-font-heading);
+  font-weight: 400;
+}
+
+.journal-entry-content {
+  font-family: var(--litm-font-text);
+}
+
+.journal-entry-content h2 {
+  border-inline-start: .26em solid var(--os-lime);
+  padding-inline-start: .35em;
+}
+
+/* Rich-text toolbars sit on a dark surface even on light sheets. Scope the
+   palette to the editor controls so the document text keeps its own colors. */
+.mist-engine .window-content
+  :is(.editor-menu, prose-mirror menu):not(.editor-content *, .ProseMirror *) {
+  --os-editor-toolbar-bg: #243246;
+  --os-editor-toolbar-text: #eef6ff;
+  --os-editor-toolbar-hover: #405976;
+  --os-editor-toolbar-focus: #c3ecff;
+  --color-text-primary: var(--os-editor-toolbar-text);
+  --color-text-emphatic: #fff;
+  --color-text-secondary: #c4d2e2;
+  color: var(--os-editor-toolbar-text);
+  background-color: var(--os-editor-toolbar-bg);
+
+  & :is(button, a, [role="button"]) {
+    color: var(--os-editor-toolbar-text);
+    background-color: transparent;
+  }
+
+  & i {
+    color: inherit;
+  }
+
+  & :is(button, a, [role="button"]):is(:hover, :focus-visible, .active, [aria-pressed="true"]):not(:disabled, [aria-disabled="true"]) {
+    color: #fff;
+    background-color: var(--os-editor-toolbar-hover);
+  }
+
+  & :is(button, a, [role="button"]):focus-visible {
+    outline: 2px solid var(--os-editor-toolbar-focus);
+    outline-offset: -2px;
+  }
+
+  & :is(:disabled, [aria-disabled="true"]) {
+    color: #a4b5c9;
+  }
+}
+
+/* Only the Milestone track is omitted from Otherscape advancement. */
+.mist-engine .development-partial-container[data-value-key="system.milestone"] {
+  display: none;
+}
+
+/* Theme Kit header: category first, then its themebook choice. */
+.mist-engine .os-themekit-header > .flexrow {
+  column-gap: 1rem;
+}
+
+.mist-engine .os-themekit-header > .flexrow > .flexcol {
+  min-width: 0;
+}
+
+.mist-engine .os-themekit-header .os-themekit-type-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 1rem;
+}
+
+.mist-engine .os-themekit-type-row > .flexrow {
+  min-width: 0;
+}
+
+.mist-engine .os-themekit-type-row select {
+  min-width: 0;
+  width: 100%;
+}
+
+
+.mist-engine.sheet.actor.litm-character .sheet-header .short-description:not(:has(input)) {
+  font-family: "Exo 2", sans-serif;
+}
+
+
+.mist-engine.litm-character .os-roll-with {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.mist-engine .os-domain-note {
+  line-height: 1.4;
+}
+
+.mist-engine.sheet.actor.litm-character .sheet-header .grid > button.change-custom-background-btn {
+  box-sizing: border-box;
+  height: 32px;
+  min-height: 0;
+  padding-block: 2px;
+  line-height: 1.15;
+}
+
+.mist-engine.sheet.actor.litm-character .os-custom-text-color {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+.mist-engine.sheet.actor.litm-character .os-custom-text-color-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  min-width: 0;
+  height: 32px;
+}
+.mist-engine.sheet.actor.litm-character .os-custom-text-color--selected .os-custom-text-color-actions {
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 4px;
+}
+.mist-engine.sheet.actor.litm-character .os-custom-text-color-actions > button {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 32px;
+  padding: 2px 4px;
+  margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.15;
+}
+.mist-engine.sheet.actor.litm-character .os-custom-text-color--selected .os-custom-text-color-actions > button {
+  font-size: .75rem;
+}
+.mist-engine.sheet.actor.litm-character .os-custom-text-color > .os-custom-text-color-swatch {
+  box-sizing: border-box;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #8293a6;
+  cursor: default;
+}
+.mist-engine.sheet.actor.litm-character .os-custom-text-color-swatch::-webkit-color-swatch-wrapper { padding: 0; }
+.mist-engine.sheet.actor.litm-character .os-custom-text-color-swatch::-webkit-color-swatch { border: 0; }
+.mist-engine.sheet.actor.litm-character .os-custom-text-color-swatch::-moz-color-swatch { border: 0; }
+.mist-engine.sheet.actor.litm-character .os-custom-text-color > color-picker[hidden] {
+  display: none !important;
+}
+.mist-engine.sheet.actor.litm-character .os-custom-text-color-hex {
+  align-self: center;
+  min-width: 0;
+  padding: 2px;
+  color: #fff;
+  background: #182332;
+  font: 400 .75rem/1.3 "IBM Plex Mono", monospace;
+  white-space: nowrap;
+}
+
+/* The nearest Foundry Applications theme controls these dialog surfaces. */
+@container style(--os-interface-color-scheme: dark) {
+  .mist-engine.dialog:is(
+    #scene-data-app, #camping-app, #group-action-app, #how-to-play-app,
+    :has(select[name="mode"]):has(select[name="duration"]),
+    :has(input[name="companion"]):has(input[name="relationshipTag"]),
+    :has(> .window-header .fa-campground)
+  ) .window-content {
+    color-scheme: dark;
+    --color-scheme: dark;
+    --os-ink: #eef3fa;
+    --os-muted: #b9c8d8;
+    --os-surface: #202c3a;
+    --os-panel: #2c394a;
+    --os-line: #60758c;
+    --os-steel: #405369;
+    --os-dialog-field: #182430;
+    --color-text-primary: var(--os-ink);
+    --color-text-emphatic: var(--os-ink);
+    --color-text-secondary: var(--os-muted);
+    --color-text-subtle: var(--os-muted);
+    --color-form-label: var(--os-ink);
+    --color-form-hint: var(--os-muted);
+    --color-select-option-bg: var(--os-dialog-field);
+    --color-fieldset-border: var(--os-line);
+    color: var(--os-ink);
+    background: var(--os-surface);
+    border-image: none;
+    border-color: var(--os-line);
+    font-family: var(--litm-font-text);
+
+    & :is(nav.tabs, nav.sheet-tabs) [data-tab]:not(.active) { color: #fff; }
+    & :is(nav.tabs, nav.sheet-tabs) [data-tab].active { color: var(--os-lime); }
+
+    & :is(h1, h2, h3, h4, legend, .scene-app-actor-header, .camping-section-header) {
+      color: var(--os-lime);
+      font-family: var(--litm-font-heading);
+    }
+
+    & :is(.how-to-play-dialog, .htp-camping, .scene-app-journey .journey-name,
+          .scene-app-journey .npc-roles, .scene-app-journey .short-description,
+          .scene-app-journey-actions a, .camping-section-header a) {
+      color: var(--os-ink);
+    }
+
+    & :is(.camping-hint, .group-action-hint, .empty-message) { color: var(--os-muted); }
+    & .camping-third-warning { color: #ffc59f; }
+    & .camping-section {
+      background: var(--os-panel);
+      border-color: var(--os-line);
+    }
+    & :is(.camping-section-header, fieldset, hr) { border-color: var(--os-line); }
+
+    & :is(input, select, textarea):not([type="range"], [type="checkbox"], [type="radio"], .fts-input-name) {
+      --input-background-color: var(--os-dialog-field);
+      --input-border-color: var(--os-line);
+      --input-text-color: var(--os-ink);
+      --input-placeholder-color: var(--os-muted);
+      --input-focus-outline-color: var(--os-lime);
+
+      &:is(:disabled, [readonly]) { --input-text-color: var(--os-muted); }
+    }
+
+    & option {
+      color: var(--os-ink);
+      background: var(--os-dialog-field);
+    }
+
+    & input:is([type="checkbox"], [type="radio"]) { --checkbox-checked-color: var(--os-lime); }
+
+    & :is(mark.tag, mark.status, mark.weakness, mark.limit, .fts-input-name, .camping-tags .tag) {
+      color: #14123b;
+    }
+
+    & :is(button, a.button) {
+      --button-background-color: var(--os-panel);
+      --button-hover-background-color: var(--os-steel);
+      --button-border-color: var(--os-line);
+      --button-text-color: var(--os-ink);
+      --button-focus-outline-color: var(--os-lime);
+      --button-hover-border-color: var(--os-lime);
+      font-family: var(--litm-font-text);
+
+      &:is(:disabled, [disabled]) {
+        --button-text-color: var(--os-muted);
+        --button-background-color: var(--os-dialog-field);
+        --button-hover-background-color: var(--button-background-color);
+        --button-hover-border-color: var(--button-border-color);
+        --button-hover-text-color: var(--button-text-color);
+      }
+    }
+
+    & :is(button, a, input, select, textarea):focus-visible { outline-color: var(--os-lime); }
+
+    & .how-to-play-dialog :is(.roll-result-success, .roll-result-partial-success, .roll-result-failure) {
+      background: var(--os-panel);
+      border: 1px solid var(--os-line);
+      border-radius: 3px;
+    }
+  }
+}
+
+#how-to-play-app .os-primer {
+  container: os-primer / inline-size;
+  min-width: 0;
+  width: 100%;
+}
+
+#how-to-play-app .os-primer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  padding: 4px;
+}
+
+#how-to-play-app .os-primer-grid > section {
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 12px;
+  align-self: stretch;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+
+#how-to-play-app .os-primer-grid :is(h3, h4) {
+  font-size: 1.35rem;
+  margin: 0 0 .55rem;
+}
+
+#how-to-play-app .os-primer-grid :is(p, ul) { margin: 0 0 .65rem; }
+#how-to-play-app .os-primer-grid ul { padding-inline-start: 1.2rem; }
+#how-to-play-app .os-primer-grid li + li { margin-block-start: .25rem; }
+#how-to-play-app .os-primer-grid section > :last-child { margin-block-end: 0; }
+
+@container os-primer (min-width: 650px) {
+  #how-to-play-app .os-primer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #how-to-play-app .os-primer-grid > :is(.htp-making-a-roll, .htp-camping) { grid-column: 1 / -1; }
+}
+
+#how-to-play-app .os-primer-outcomes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr));
+  gap: 8px;
+}
+
+#how-to-play-app .os-primer-outcomes > div {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  gap: 4px;
+  padding: 8px;
+  background-image: none;
+  background-color: var(--os-panel);
+  border: 1px solid var(--os-line);
+  border-radius: 3px;
+}
+
+#how-to-play-app .os-primer-result {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border: 0;
+}

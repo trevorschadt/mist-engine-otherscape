@@ -1,0 +1,312 @@
+/* Play and edit modes share the core-theme and supporting-card rows. */
+.mist-engine.litm-character .card-grid.os-locked-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: auto;
+  min-width: 0;
+}
+
+.mist-engine.litm-character .os-character-card-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(130px, 1fr));
+  grid-auto-columns: minmax(130px, 1fr);
+  grid-auto-flow: column;
+  gap: 5px;
+  overflow-x: auto;
+  padding: 2px;
+}
+
+/* Editing controls need wider columns while retaining four themes per row. */
+.mist-engine.litm-character .card-grid.edit-mode .os-character-card-row {
+  grid-template-columns: repeat(4, minmax(240px, 1fr));
+  grid-auto-columns: minmax(240px, 1fr);
+}
+
+.mist-engine.litm-character .os-character-card-row > .themebook-container {
+  min-width: 0;
+}
+
+/* Both Crew states share the sheet's theme-card palette. */
+.mist-engine.litm-character .themebook-container[data-card-key^="themebook:"]
+  .themebook-style:has(> .themebook-item > .theme-name > .themebook-icon),
+.mist-engine.litm-character [data-card-key="fellowship-themecard"] > .litm-fellowship-themecard {
+  color-scheme: var(--os-interface-color-scheme, light);
+  --os-theme-ink: light-dark(#1d3345, #eef6ff);
+  --os-theme-panel: light-dark(#cad9e5, #263b51);
+  --os-theme-row: light-dark(#f3f8fb, #304961);
+  --os-theme-row-edge: light-dark(#fff, #6f8da8);
+  --os-theme-stripe: light-dark(#dbe7ef, #3e5670);
+  --os-theme-band: light-dark(#57728a, #1a3047);
+  --os-theme-rule: light-dark(#839cb0, #7997b2);
+  --os-theme-active: light-dark(#235b80, #d6f979);
+  --os-card-text: var(--os-theme-ink);
+  --os-card-muted: light-dark(#4c6376, #b8cbdd);
+
+  border-radius: 2px 2px 4px 12px;
+  background:
+    repeating-linear-gradient(0deg, #ffffff12 0 1px, transparent 1px 5px),
+    linear-gradient(160deg, var(--os-theme-panel), var(--os-theme-stripe));
+  box-shadow: inset 0 0 0 1px var(--os-theme-rule);
+  padding-bottom: 6px;
+}
+
+/* Apply play-mode row styling to core themes and an assigned Crew card. */
+.mist-engine.litm-character .themebook-container[data-card-key^="themebook:"]
+  .themebook-style:has(> .themebook-item > .theme-name > .themebook-icon),
+.mist-engine.litm-character .fellowship-themebook-stylized
+  > .litm-fellowship-themecard:not(:has(.empty-message)) {
+  & > .powertags-container {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 5px 5px;
+  }
+
+  & .quest-container > h3 {
+    margin: 0;
+    padding: 2px 5px;
+    background: var(--os-theme-band);
+    color: #fff;
+    font: 400 .85rem/1.1 var(--litm-font-heading);
+    letter-spacing: .05em;
+    text-align: start;
+    text-transform: uppercase;
+  }
+
+  & :is(.item-powertag-line, .item-weakness-line) {
+    position: relative;
+    isolation: isolate;
+    align-items: center;
+    min-height: 27px;
+    margin: 0;
+    padding: 2px 3px 2px 7px;
+    border: 0;
+    text-shadow: none;
+  }
+
+  & :is(.item-powertag-line, .item-weakness-line)::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    border: 1px solid var(--os-theme-row-edge);
+    background: var(--os-theme-row);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+  }
+
+  & .item-weakness-line:has(.litm-pc-weakness)::before {
+    background: repeating-linear-gradient(135deg,
+      var(--os-theme-row) 0 12px, var(--os-theme-stripe) 12px 24px);
+  }
+
+  & .item-weakness-line:not(:has(> .litm-pc-weakness)) {
+    display: none;
+  }
+
+  & :is(.item-powertag-line, .item-weakness-line):has(.selected) {
+    outline: 2px solid var(--os-theme-active);
+    outline-offset: -1px;
+  }
+
+  & :is(.litm-pc-powertag, .litm-pc-weakness).selected::before {
+    display: none;
+  }
+
+  & :is(.litm-pc-powertag, .litm-pc-weakness) {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 2px 4px;
+    color: var(--os-theme-ink);
+    text-align: start;
+    overflow-wrap: anywhere;
+  }
+
+  & .litm-pc-powertag.first {
+    top: auto;
+    font-size: 1.05em;
+    font-weight: 700;
+  }
+
+  & .litm-pc-powertag.burned {
+    color: var(--os-card-muted);
+  }
+
+  & .weakness-indicator {
+    flex: 0 0 auto;
+    align-self: center;
+    color: var(--os-theme-band);
+  }
+
+  & .item-powertag-line {
+    display: grid;
+    grid-template: "tag burn" auto / minmax(0, 1fr) 31px;
+  }
+
+  & .item-powertag-line > .litm-pc-powertag {
+    grid-area: tag;
+  }
+
+  & .burn-indicator {
+    grid-area: burn;
+    display: grid;
+    place-items: center;
+    align-self: stretch;
+  }
+
+  & .burn-indicator[data-action="toggleToBurn"] {
+    cursor: pointer;
+  }
+
+  & .burn-indicator .burn-icon {
+    width: 19px;
+    height: 15px;
+    background: #fff;
+    mask: url("../icons/burn-fireball.svg") center / contain no-repeat;
+    filter: none;
+  }
+
+  & .burn-indicator[data-action="toggleToBurn"]::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 1px 4px 1px auto;
+    width: 33px;
+    background: var(--os-theme-band);
+    clip-path: polygon(0 0, 72% 0, 100% 100%, 28% 100%);
+    pointer-events: none;
+  }
+
+  & .burn-indicator:hover::before,
+  & .burn-indicator:has(.to-burn)::before {
+    background: #953815;
+  }
+
+  & .burn-indicator .burn-icon.to-burn {
+    background: #ffcf80;
+  }
+
+  & .item-powertag-line:has(.burned) .burn-icon {
+    opacity: .5;
+  }
+
+  & .quest-container {
+    margin: 0 5px;
+  }
+
+  & .quest-container > .quest-text {
+    margin: 0;
+    padding: 6px 5px;
+    color: var(--os-theme-ink);
+    background: var(--os-theme-row);
+    border-bottom: 1px solid var(--os-theme-rule);
+  }
+
+  & .development-container {
+    margin: auto 5px 0;
+    padding-top: 5px;
+  }
+
+  & .development-partial-container {
+    color: var(--os-theme-ink);
+  }
+
+  & .development-partial-container .marker.checked {
+    color: var(--os-theme-active);
+  }
+}
+
+/* Crew has no burn action of its own. Keep its tags full-width. */
+.mist-engine.litm-character .fellowship-themebook-stylized
+  > .litm-fellowship-themecard .item-powertag-line {
+  grid-template: "tag" auto / minmax(0, 1fr);
+}
+
+.mist-engine.litm-character .fellowship-themebook-stylized
+  > .litm-fellowship-themecard .burn-indicator:empty {
+  display: none;
+}
+
+.mist-engine.litm-character [data-card-key="fellowship-themecard"] > .litm-fellowship-themecard {
+  & .empty-message {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 7px 6px 3px;
+    color: var(--os-theme-ink);
+    font: 400 .85rem/1.4 var(--litm-font-text);
+    text-align: start;
+  }
+
+  & .empty-message p {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  & .empty-message > .flexrow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  & .empty-message button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4em;
+    min-width: 0;
+    min-height: 28px;
+    height: auto;
+    padding: 4px 6px;
+    border: 1px solid var(--os-theme-rule);
+    border-radius: 3px;
+    background: var(--os-theme-row);
+    color: var(--os-theme-ink);
+    font: 600 .8rem/1.25 var(--litm-font-text);
+    overflow-wrap: anywhere;
+  }
+
+  & .empty-message button i {
+    color: inherit;
+    flex: 0 0 auto;
+  }
+
+  & .empty-message button:hover:not(:disabled) {
+    background: var(--os-theme-band);
+    color: #fff;
+    box-shadow: none;
+  }
+
+  & .empty-message button:focus-visible {
+    outline: 2px solid var(--os-theme-active);
+    outline-offset: 1px;
+  }
+
+  & .themebook-section-header {
+    background: var(--os-theme-band);
+    color: #fff;
+  }
+}
+
+/* The locked tag rows already distinguish weaknesses with striped panels. */
+.mist-engine.litm-character .themebook-container[data-card-key^="themebook:"]
+  .themebook-style:has(> .themebook-item > .theme-name > .themebook-icon) .weakness-indicator,
+.mist-engine.litm-character .fellowship-themebook-stylized
+  > .litm-fellowship-themecard .weakness-indicator {
+  display: none;
+}
+
+
+/* Separate the advancement captions from their three interactive markers. */
+.mist-engine.litm-character .development-partial-container:has(> .os-development-label) {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  justify-content: center;
+  align-content: start;
+  gap: 3px 5px;
+}
+
+.mist-engine.litm-character .development-partial-container > .os-development-label {
+  grid-column: 1 / -1;
+  text-align: center;
+}
