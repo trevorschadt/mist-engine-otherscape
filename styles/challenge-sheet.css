@@ -151,7 +151,7 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 7px 100%, 0 calc(100% - 7px));
   }
 
-  & .npc-beautified-container-stats .npc-limit-item :is(mark.limit, .limit-value) {
+  & .npc-beautified-container-stats .npc-limit-item :is(.os-limit-name, .limit-value) {
     color: inherit;
     background: transparent;
     font-family: var(--litm-font-heading);
@@ -162,7 +162,7 @@
     margin: 0;
   }
 
-  & .npc-beautified-container-stats .npc-limit-item mark.limit {
+  & .npc-beautified-container-stats .npc-limit-item .os-limit-name {
     font-size: .85rem;
     line-height: 1.2;
     font-style: normal;
@@ -187,10 +187,26 @@
     background: #ffc7a9;
   }
 
-  & .npc-limits-list .npc-limit-consequence {
-    flex: 0 0 100%;
+  & .npc-limits-container .npc-limit-consequence {
+    margin-block-start: 5px;
+    border-inline-start: 2px solid #a4d638;
+    color: var(--os-challenge-text);
+    text-align: start;
+    overflow-wrap: anywhere;
     background: var(--os-challenge-panel);
     padding: 4px 7px;
+  }
+
+  & .npc-limit-consequence .os-limit-consequence-name {
+    text-transform: uppercase;
+  }
+
+  & .npc-limit-consequence > p:first-of-type {
+    display: inline;
+  }
+
+  & .npc-special-features-list .npc-special-feature-description {
+    color: var(--os-challenge-text);
   }
 
   & .npc-threats-and-consequences-container .entry-name {

@@ -34,6 +34,7 @@ Hooks.once("ready", async () => {
         template: "modules/otherscape-mist-skin/templates/challenge-details.hbs",
         templates: [
             ...(Sheet.PARTS.details.templates ?? []),
+            "modules/otherscape-mist-skin/templates/challenge-locked-stats.hbs",
             "modules/otherscape-mist-skin/templates/power-set-limits.hbs",
             "modules/otherscape-mist-skin/templates/power-set-threats.hbs",
         ],

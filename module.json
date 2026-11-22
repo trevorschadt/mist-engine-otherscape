@@ -1,90 +1,82 @@
 {
-    "id": "otherscape-mist-skin",
-    "title": ":Otherscape — Mist Engine Reskin",
-    "description": "An unofficial mythic cyberpunk visual skin and English terminology override for Mist Engine.",
-    "version": "1.10.28",
-    "compatibility":
-    {
-        "minimum": "14",
-        "maximum": "14"
-    },
-    "relationships":
-    {
-        "systems":
-        [
-            {
-                "id": "mist-engine-fvtt",
-                "type": "system",
-                "compatibility":
-                {
-                    "minimum": "14.5.5"
-                }
-            }
-        ],
-        "requires":
-        [
-            {
-                "id": "game-icons-net",
-                "type": "module"
-            }
-        ]
-    },
-    "styles":
-    [
-        {
-            "src": "styles/otherscape.css"
-        },
-        {
-            "src": "styles/chat.css"
-        },
-        {
-            "src": "styles/theme-categories.css"
-        },
-        {
-            "src": "styles/locked-theme-cards.css"
-        },
-        {
-            "src": "styles/challenge-sheet.css"
-        },
-        {
-            "src": "styles/illustrated-theme-cards.css"
-        },
-        {
-            "src": "styles/essence.css"
-        },
-        {
-            "src": "styles/journal.css"
-        },
-        {
-            "src": "styles/power-sets.css"
+  "id": "otherscape-mist-skin",
+  "title": ":Otherscape \u2014 Mist Engine Reskin",
+  "description": "An unofficial mythic cyberpunk visual skin and English terminology override for Mist Engine.",
+  "version": "1.10.29",
+  "compatibility": {
+    "minimum": "14",
+    "maximum": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "mist-engine-fvtt",
+        "type": "system",
+        "compatibility": {
+          "minimum": "14.5.5"
         }
+      }
     ],
-    "languages":
-    [
-        {
-            "lang": "en",
-            "name": "English",
-            "path": "lang/en.json",
-            "system": "mist-engine-fvtt"
-        }
-    ],
-    "esmodules":
-    [
-        "scripts/theme-type-labels.mjs",
-        "scripts/locked-card-layout.mjs",
-        "scripts/actor-creation-types.mjs",
-        "scripts/character-terminology.mjs",
-        "scripts/themekit-type-options.mjs",
-        "scripts/item-creation-types.mjs",
-        "scripts/go-out-in-a-blaze.mjs",
-        "scripts/theme-card-details.mjs",
-        "scripts/roll-with-theme.mjs",
-        "scripts/essence.mjs",
-        "scripts/planned-tag-visibility.mjs",
-        "scripts/power-sets.mjs",
-        "scripts/default-icons.mjs",
-        "scripts/how-to-play.mjs",
-        "scripts/journal-viewer-theme.mjs",
-        "scripts/custom-text-color.mjs"
+    "requires": [
+      {
+        "id": "game-icons-net",
+        "type": "module"
+      }
     ]
+  },
+  "styles": [
+    {
+      "src": "styles/otherscape.css"
+    },
+    {
+      "src": "styles/chat.css"
+    },
+    {
+      "src": "styles/theme-categories.css"
+    },
+    {
+      "src": "styles/locked-theme-cards.css"
+    },
+    {
+      "src": "styles/challenge-sheet.css"
+    },
+    {
+      "src": "styles/illustrated-theme-cards.css"
+    },
+    {
+      "src": "styles/essence.css"
+    },
+    {
+      "src": "styles/journal.css"
+    },
+    {
+      "src": "styles/power-sets.css"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "system": "mist-engine-fvtt"
+    }
+  ],
+  "esmodules": [
+    "scripts/theme-type-labels.mjs",
+    "scripts/locked-card-layout.mjs",
+    "scripts/actor-creation-types.mjs",
+    "scripts/character-terminology.mjs",
+    "scripts/themekit-type-options.mjs",
+    "scripts/item-creation-types.mjs",
+    "scripts/go-out-in-a-blaze.mjs",
+    "scripts/theme-card-details.mjs",
+    "scripts/roll-with-theme.mjs",
+    "scripts/essence.mjs",
+    "scripts/planned-tag-visibility.mjs",
+    "scripts/power-sets.mjs",
+    "scripts/default-icons.mjs",
+    "scripts/how-to-play.mjs",
+    "scripts/journal-viewer-theme.mjs",
+    "scripts/custom-text-color.mjs"
+  ]
 }
