@@ -793,3 +793,8 @@
   object-fit: contain;
   border: 0;
 }
+
+/* The legacy color field stays in the form so existing values round-trip. */
+.mist-engine.sheet.themebook .box-shadowed-container:has(> .flexrow > select[name="system.color"]) {
+  display: none;
+}
